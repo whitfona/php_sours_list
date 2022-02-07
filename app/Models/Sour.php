@@ -32,4 +32,18 @@ class Sour extends Model
         ]);
     }
 
+    public function destory(Sour $sour)
+    {
+        $sour->delete();
+
+        return redirect('/dashboard')->with([
+            'type' => 'success',
+            'message' => 'The sour was successfully deleted!'
+        ]);
+    }
+
+    protected $casts = [
+        'hasLactose' => 'boolean',
+    ];
+
 }
