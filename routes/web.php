@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::post('/sours', [Sour::class, 'store'])->name('sours.store');
+Route::delete('/sours/{sour}', [Sour::class, 'destroy'])->name('sours.delete');
 
 
 require __DIR__.'/auth.php';
