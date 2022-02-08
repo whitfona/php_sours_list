@@ -28,13 +28,15 @@ Route::delete('/sours/{sour}', [Sour::class, 'destroy'])->name('sours.delete');
 Route::patch('sours/{sour}', function (Sour $sour) {
 
     $validated = request()->validate([
-        'company' => '',
-        'name' => ['required'],
-        'percent' => '',
-        'comments' => '',
-        'rating' => '',
-        'hasLactose' => ''
-    ]);
+        'company' => ['sometimes', 'required', 'string', 'max:100'],
+        'name' => ['sometimes', 'required', 'string', 'unique:sours,name', 'max:100'],
+        'percent' => ['sometimes', 'numeric', 'gte:0'],
+        'comments' => ['sometimes', 'string', 'max:280'],
+        'rating' => ['sometimes', 'numeric', 'gte:0'],
+        'hasLactose' => ['sometimes', 'boolean'],
+        ],
+        [ 'name.unique' => 'That sour has already been rated!', ]
+    );
 
     $sour->update($validated);
 
