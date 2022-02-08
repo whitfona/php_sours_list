@@ -25,5 +25,20 @@ Route::get('/dashboard', function () {
 Route::post('/sours', [Sour::class, 'store'])->name('sours.store');
 Route::delete('/sours/{sour}', [Sour::class, 'destroy'])->name('sours.delete');
 
+Route::patch('sours/{sour}', function (Sour $sour) {
+
+    $validated = request()->validate([
+        'company' => '',
+        'name' => ['required'],
+        'percent' => '',
+        'comments' => '',
+        'rating' => '',
+        'hasLactose' => ''
+    ]);
+
+    $sour->update($validated);
+
+})->name('sours.update');
+
 
 require __DIR__.'/auth.php';
