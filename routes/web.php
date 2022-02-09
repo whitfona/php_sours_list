@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Sour;
+use App\Http\Controllers\SourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +22,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/sours', [Sour::class, 'store'])->name('sours.store');
-Route::patch('sours/{sour}', [Sour::class, 'update'])->name('sours.update');
-Route::delete('/sours/{sour}', [Sour::class, 'destroy'])->name('sours.delete');
-
+Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
+Route::patch('sours/{sour}', [SourController::class, 'update'])->name('sours.update');
+Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
 
 require __DIR__.'/auth.php';
