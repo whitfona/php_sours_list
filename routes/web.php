@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SourController;
+use App\Models\Sour;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
-Route::patch('sours/{sour}', [SourController::class, 'update'])->name('sours.update');
-Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
+
+Route::get('/sours', function () {
+    $sours = Sour::all()->sortByDesc('rating');
+
+    return view('sours.index', compact('sours'));
+
+})->name('sours.index');
+
+Route::middleware(['auth'])->prefix('/sours')->group(function() {
+    Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
+    Route::patch('/sours/{sour}', [SourController::class, 'update'])->name('sours.update');
+    Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
+});
+
 
 require __DIR__.'/auth.php';

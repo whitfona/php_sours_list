@@ -3,6 +3,7 @@
 namespace Tests\Feature\Sours;
 
 use App\Models\Sour;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -13,6 +14,8 @@ class EditSourTest extends TestCase
 
     public function test_sour_can_be_edited()
     {
+        $this->actingAs(User::factory()->create());
+
         $sour = Sour::factory()->create();
 
         $this->patchJson(route('sours.update', $sour), [
@@ -34,8 +37,22 @@ class EditSourTest extends TestCase
         $this->assertEquals($sour->toArray(), Sour::all()->first()->toArray());
     }
 
+    public function test_sour_cannot_be_edited_by_unauthenticated_user()
+    {
+        $sour = Sour::factory()->create();
+
+        $this->patchJson(route('sours.update', $sour), [
+            'company' => 'Nick Test Company',
+        ]);
+
+        $sour['company'] = 'Nick Test Company';
+
+        $this->assertGuest();
+    }
+
     public function test_error_thrown_if_updated_name_is_not_unique()
     {
+        $this->actingAs(User::factory()->create());
         $sour = Sour::factory()->create(['name' => 'Not a unique name']);
         $sourToUpdate = Sour::factory()->create();
 
@@ -58,6 +75,7 @@ class EditSourTest extends TestCase
      */
     public function test_error_thrown_with_invalid_value($attribute, $attributeValue, $errorMessage)
     {
+        $this->actingAs(User::factory()->create());
         $sour = Sour::factory()->create();
 
         $attributeToUpdate = [$attribute => $attributeValue];

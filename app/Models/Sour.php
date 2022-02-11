@@ -9,10 +9,14 @@ class Sour extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['company', 'name', 'percent', 'comments', 'rating', 'hasLactose'];
+    protected $fillable = ['user_id', 'company', 'name', 'percent', 'comments', 'rating', 'hasLactose'];
 
     protected $casts = [
         'hasLactose' => 'boolean',
     ];
 
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

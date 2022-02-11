@@ -19,7 +19,7 @@ class SourController extends Controller
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
-        Sour::create($validated);
+        auth()->user()->sours()->create($validated);
 
         return redirect('/dashboard')->with([
             'type' => 'success',
