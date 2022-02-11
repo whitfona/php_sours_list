@@ -15,6 +15,7 @@ class CreateSoursTable extends Migration
     {
         Schema::create('sours', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->text('company');
             $table->text('name');
             $table->float('percent');
@@ -22,6 +23,8 @@ class CreateSoursTable extends Migration
             $table->float('rating');
             $table->boolean('hasLactose');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 

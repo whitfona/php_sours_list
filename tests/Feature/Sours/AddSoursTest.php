@@ -3,6 +3,7 @@
 namespace Tests\Feature\Sours;
 
 use App\Models\Sour;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -11,8 +12,26 @@ class AddSoursTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_new_sour_can_be_added()
+    public function test_unauthenticated_user_cannot_add_sour()
     {
+        $attributes = [
+            'company' => 'Fixed Gear Brewing',
+            'name' => 'Cherry Training Wheels',
+            'percent' => 4.0,
+            'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
+            'rating' => 9,
+            'hasLactose' => true,
+        ];
+
+        $this->postJson(route('sours.store'), $attributes);
+
+        $this->assertGuest();
+    }
+
+    public function test_new_sour_can_be_added_by_authenticated_user()
+    {
+        $this->actingAs(User::factory()->create());
+
         $attributes = [
             'company' => 'Fixed Gear Brewing',
             'name' => 'Cherry Training Wheels',
@@ -30,6 +49,8 @@ class AddSoursTest extends TestCase
 
     public function test_new_sour_has_unique_name()
     {
+        $this->actingAs(User::factory()->create());
+
         $sour = Sour::factory()->create();
         $secondSour = Sour::factory()->raw(['name' => $sour->name]);
 
@@ -50,6 +71,8 @@ class AddSoursTest extends TestCase
      */
     public function test_add_invalid_sour_cannot_be_added($invalidAttribute, $errorMessage)
     {
+        $this->actingAs(User::factory()->create());
+
         $this->postJson(route('sours.store'), $invalidAttribute)
             ->assertUnprocessable()
             ->assertExactJson([

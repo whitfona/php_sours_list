@@ -32,7 +32,7 @@ Route::get('/sours', function () {
 })->name('sours.index');
 
 
-Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
+Route::post('/sours', [SourController::class, 'store'])->middleware(['auth'])->name('sours.store');
 Route::patch('sours/{sour}', [SourController::class, 'update'])->name('sours.update');
 Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
 
