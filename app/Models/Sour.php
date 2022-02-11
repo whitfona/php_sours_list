@@ -14,4 +14,9 @@ class Sour extends Model
     protected $casts = [
         'hasLactose' => 'boolean',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
