@@ -14,5 +14,4 @@ class Sour extends Model
     protected $casts = [
         'hasLactose' => 'boolean',
     ];
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SourController;
+use App\Models\Sour;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/sours', function () {
+    $sours = Sour::all()->sortByDesc('rating');
+
+    return view('sours.index', compact('sours'));
+
+})->name('sours.index');
+
 
 Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
 Route::patch('sours/{sour}', [SourController::class, 'update'])->name('sours.update');
