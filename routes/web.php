@@ -31,9 +31,11 @@ Route::get('/sours', function () {
 
 })->name('sours.index');
 
+Route::middleware(['auth'])->prefix('/sours')->group(function() {
+    Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
+    Route::patch('/sours/{sour}', [SourController::class, 'update'])->name('sours.update');
+    Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
+});
 
-Route::post('/sours', [SourController::class, 'store'])->middleware(['auth'])->name('sours.store');
-Route::patch('sours/{sour}', [SourController::class, 'update'])->middleware(['auth'])->name('sours.update');
-Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->middleware(['auth'])->name('sours.delete');
 
 require __DIR__.'/auth.php';
