@@ -27,6 +27,22 @@ class SourController extends Controller
         ]);
     }
 
+    public function index()
+    {
+        $sours = auth()->user()->sours;
+
+        return view('sours.index', compact('sours'));
+    }
+
+    public function show(Sour $sour)
+    {
+        if (auth()->user()->isNot($sour->user)){
+            abort(403);
+        }
+
+        return view('sours.show', compact('sour'));
+    }
+
     public function update(Sour $sour)
     {
         $validated = request()->validate([

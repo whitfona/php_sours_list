@@ -24,17 +24,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/sours', function () {
-    $sours = Sour::all()->sortByDesc('rating');
-
-    return view('sours.index', compact('sours'));
-
-})->name('sours.index');
-
 Route::middleware(['auth'])->prefix('/sours')->group(function() {
-    Route::post('/sours', [SourController::class, 'store'])->name('sours.store');
-    Route::patch('/sours/{sour}', [SourController::class, 'update'])->name('sours.update');
-    Route::delete('/sours/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
+    Route::post('/', [SourController::class, 'store'])->name('sours.store');
+    Route::get('/', [SourController::class, 'index'])->name('sours.index');
+    Route::get('/{sour}', [SourController::class, 'show'])->name('sours.show');
+    Route::patch('/{sour}', [SourController::class, 'update'])->name('sours.update');
+    Route::delete('/{sour}', [SourController::class, 'destroy'])->name('sours.delete');
 });
 
 

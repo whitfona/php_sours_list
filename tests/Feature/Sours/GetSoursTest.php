@@ -3,6 +3,7 @@
 namespace Tests\Feature\Sours;
 
 use App\Models\Sour;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -18,17 +19,66 @@ class GetSoursTest extends TestCase
         $this->post(route('sours.store'), $attributes)->assertRedirect('login');
     }
 
-    public function test_get_all_sours_from_database()
+    public function test_authenticated_user_can_only_view_their_sours()
     {
-        $sours = Sour::factory()->create();
+        $user = User::factory()->create();
+        $this->be($user);
+
+        $notUserSour = Sour::factory()->create();
+        $userSour = Sour::factory()->create(['user_id' => $user->id]);
 
         $this->get(route('sours.index'))
-            ->assertSee($sours->all()->first()->company)
-            ->assertSee($sours->all()->first()->name)
-            ->assertSee($sours->all()->first()->rating)
-            ->assertSee($sours->all()->first()->percent)
-            ->assertSee($sours->all()->first()->hasLactose)
-            ->assertSee($sours->all()->first()->comments);
+            ->assertOk()
+            ->assertSee(['name' => $userSour->name])
+            ->assertDontSee(['name' => $notUserSour->name]);
     }
 
+    public function test_authenticated_user_can_view_one_of_their_sours()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+
+        $userSour = Sour::factory()->create(['user_id' => $user->id]);
+
+        $this->get(route('sours.show', $userSour))
+            ->assertSee(['name' => $userSour->name])
+            ->assertSee(['company' => $userSour->company]);
+    }
+
+    public function test_authenticated_user_cannot_view_all_sours_of_others()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $sour = Sour::factory()->create();
+
+        $this->get(route('sours.index'))
+            ->assertDontSee(['name' => $sour->name])
+            ->assertDontSee(['company' => $sour->company]);
+    }
+
+    public function test_authenticated_user_cannot_view_one_sour_of_other_user()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $sour = Sour::factory()->create();
+
+        $this->get(route('sours.show', $sour))
+            ->assertStatus(403);
+    }
+
+    public function test_unauthorized_user_cannot_view_sours()
+    {
+        $this->get(route('sours.index'))
+            ->assertRedirect('login');
+
+        $this->assertGuest();
+    }
+
+    public function test_unauthenticated_user_cannot_view_one_sour_of_other_user()
+    {
+         $sour = Sour::factory()->create();
+
+         $this->get(route('sours.show', $sour))
+             ->assertRedirect('login');
+    }
 }
