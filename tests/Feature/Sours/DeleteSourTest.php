@@ -36,6 +36,5 @@ class DeleteSourTest extends TestCase
         $this->deleteJson(route('sours.delete', $sour), $sour->toArray());
 
         $this->assertGuest();
-
     }
 }
