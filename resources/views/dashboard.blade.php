@@ -13,15 +13,15 @@
                         @foreach($sours as $sour)
                             <div class="md:flex gap-4 mb-8">
                                 <img class="md:max-w-xs" src="../images/beer.jpeg">
-                                <div>
-                                    <div class="flex mb-3">
-                                        <h2 class="text-lg"><span class="font-semibold tracking-wide uppercase">Rating:</span> {{ $sour->rating }}</h2>
-                                        <h2 class="text-lg pl-10"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
+                                <div class="mt-4">
+                                    <div class="flex flex-wrap gap-x-2 gap-y-0 mb-3">
+                                        <h2 class="text-lg w-32"><span class="font-semibold tracking-wide uppercase">Rating:</span> {{ $sour->rating }}</h2>
+                                        <h2 class="text-lg"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
                                     </div>
-                                    <div class="flex flex-wrap mb-3">
+                                    <div class="flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Percent:</span> {{ $sour->percent }}%</h3>
-                                        <h3 class="text-md pl-10"><span class="font-semibold tracking-wide uppercase">Company:</span> {{ $sour->company }}</h3>
-                                        <h3 class="text-md pl-10"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
+                                        <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Company:</span> {{ $sour->company }}</h3>
+                                        <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                             @if($sour->hasLactose == 1)
                                                 Yes
                                             @else
