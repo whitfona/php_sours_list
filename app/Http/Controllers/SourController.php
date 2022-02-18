@@ -31,7 +31,7 @@ class SourController extends Controller
     {
         $sours = auth()->user()->sours;
 
-        return view('sours.index', compact('sours'));
+        return view('dashboard', compact('sours'));
     }
 
     public function show(Sour $sour)
