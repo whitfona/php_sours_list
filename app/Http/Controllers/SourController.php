@@ -29,7 +29,7 @@ class SourController extends Controller
 
     public function index()
     {
-        $sours = auth()->user()->sours;
+        $sours = auth()->user()->sours->sortByDesc('rating');
 
         return view('dashboard', compact('sours'));
     }
