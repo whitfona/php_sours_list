@@ -20,9 +20,9 @@ class SourFactory extends Factory
             },
             'company' => $this->faker->name,
             'name' => $this->faker->name,
-            'percent' => $this->faker->randomFloat(0, 10),
+            'percent' => $this->faker->randomFloat(1, 0, 10),
             'comments' => $this->faker->paragraph,
-            'rating' => $this->faker->randomFloat(0, 10),
+            'rating' => $this->faker->randomFloat(1, 0, 10),
             'hasLactose' => $this->faker->boolean,
         ];
     }
