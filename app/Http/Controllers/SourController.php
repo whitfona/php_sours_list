@@ -11,17 +11,18 @@ class SourController extends Controller
         $validated = request()->validate([
             'company' => ['required', 'string', 'max:100'],
             'name' => ['required', 'string', 'unique:sours,name', 'max:100'],
-            'percent' => ['numeric', 'gte:0'],
-            'comments' => ['string', 'max:280'],
-            'rating' => ['numeric', 'gte:0'],
-            'hasLactose' => ['boolean'],
+            'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
+            'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
+            'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
+        $validated['hasLactose'] = request()->has('hasLactose');
+
         auth()->user()->sours()->create($validated);
 
-        return redirect('/dashboard')->with([
+        return redirect(route('sours.index'))->with([
             'type' => 'success',
             'message' => 'Your new sour was successfully added!'
         ]);

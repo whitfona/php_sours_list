@@ -18,10 +18,10 @@ class CreateSoursTable extends Migration
             $table->unsignedInteger('user_id');
             $table->text('company');
             $table->text('name');
-            $table->float('percent');
-            $table->string('comments');
+            $table->float('percent')->nullable();
+            $table->string('comments')->nullable();
             $table->float('rating');
-            $table->boolean('hasLactose');
+            $table->boolean('hasLactose')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
