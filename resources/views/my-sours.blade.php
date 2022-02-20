@@ -15,7 +15,7 @@
 
         <!-- Add Sour Form -->
         <div
-            class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded fixed top-[10%] left-[50%] w-[90%] -translate-x-2/4"
+            class="modal max-w-7xl sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded relative top-[10%] left-[50%] w-[90%] -translate-x-2/4"
             role="dialog"
             tabindex="-1"
             x-show="isModalOpen"
@@ -36,7 +36,7 @@
                             <div class="mb-8">
                                 <div class="md:flex gap-4">
                                     <img class="md:max-w-xs" src="../images/beer.jpeg">
-                                    <div class="sm:mt-4 w-full">
+                                    <div class="pt-6 md:pt-0 w-full">
                                         <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
                                             <h2 class="text-lg w-32"><span class="font-semibold tracking-wide uppercase">Rating:</span> {{ $sour->rating }}</h2>
                                             <h2 class="text-lg"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
@@ -58,24 +58,24 @@
                                 <div x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
                                     <div class="overlay" x-show="isModalOpen" x-cloak z-1></div>
                                     <!-- Delete Sour -->
-                                    <form method="POST" onclick="return confirm('Are you sure you want to delete this sour?')" action="/sours/{{ $sour->id }}">
+                                    <form method="POST" onclick="return confirm('Are you sure you want to delete this sour?')" action="/sours/{{ $sour->id }}" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
+                                        <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline">
                                             <p class="text-md text-white font-extrabold uppercase">Delete Sour</p>
                                         </button>
                                     </form>
 
                                     <!-- Edit Form Button -->
-                                    <button x-on:click="isModalOpen = true" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
+                                    <button x-on:click="isModalOpen = true" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
                                         <p class="text-md text-white font-extrabold uppercase">Edit Sour</p>
                                     </button>
 
                                     <!-- Edit Sour Form -->
                                     <div
-                                        class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded fixed top-[10%] left-[50%] w-[90%] -translate-x-2/4"
+                                        class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded absolute top-[10%] left-[50%] w-[90%] -translate-x-2/4"
                                         role="dialog"
-                                        tabindex="-1"
+                                        tabindex="1"
                                         x-show="isModalOpen"
                                         x-on:click.away="isModalOpen = false"
                                         x-cloak
