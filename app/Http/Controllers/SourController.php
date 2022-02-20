@@ -35,6 +35,13 @@ class SourController extends Controller
         return view('dashboard', compact('sours'));
     }
 
+    public function all()
+    {
+        $sours = Sour::all();
+
+        return view('all-sours', compact('sours'));
+    }
+
     public function show(Sour $sour)
     {
         if (auth()->user()->isNot($sour->user)){

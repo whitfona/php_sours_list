@@ -12,6 +12,33 @@ class GetSoursTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_authenticated_user_can_view_all_sours()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        $guestSour = Sour::factory()->create();
+        $userSour = Sour::factory()->create(['user_id' => $user->id]);
+
+        $this->assertDatabaseCount('sours', 2);
+
+        $this->get(route('sours.all'))
+            ->assertOk()
+            ->assertSee(['name' => $userSour->name])
+            ->assertSee(['name' => $guestSour->name]);
+    }
+
+    public function test_unauthenticated_user_cannot_view_all_sours()
+    {
+        $guestSour = Sour::factory()->create();
+
+        $this->assertDatabaseCount('sours', 1);
+
+        $this->get(route('sours.all'))
+            ->assertRedirect('login');
+
+        $this->assertGuest();
+    }
+
     public function test_a_sour_requires_an_user()
     {
         $attributes = Sour::factory()->raw();
