@@ -16,7 +16,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased"  x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
         <div class="min-h-screen bg-pink-200">
             @include('layouts.navigation')
 

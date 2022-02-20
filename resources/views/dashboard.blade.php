@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-fit mx-auto sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
+    <button class="max-w-fit mx-auto sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
         <x-plus-icon />
         <p class="text-4xl text-white font-extrabold uppercase pl-3">Add Sour</p>
-    </div>
+    </button>
 
     <!-- Add Sour Form -->
     <div id="add-form" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
