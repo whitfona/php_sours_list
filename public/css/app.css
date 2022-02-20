@@ -1071,6 +1071,9 @@ select {
 .font-extrabold {
   font-weight: 800;
 }
+.font-bold {
+  font-weight: 700;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -1467,6 +1470,10 @@ select {
 
   .md\:max-w-xs {
     max-width: 20rem;
+  }
+
+  .md\:flex-wrap {
+    flex-wrap: wrap;
   }
 }
 @media (min-width: 1024px) {

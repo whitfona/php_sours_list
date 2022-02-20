@@ -76,7 +76,7 @@ class SourController extends Controller
     {
         $sour->delete();
 
-        return redirect('/dashboard')->with([
+        return redirect(route('sours.index'))->with([
             'type' => 'success',
             'message' => 'The sour was successfully deleted!'
         ]);
