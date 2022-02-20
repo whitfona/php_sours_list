@@ -32,7 +32,7 @@ class SourController extends Controller
     {
         $sours = auth()->user()->sours->sortByDesc('rating');
 
-        return view('dashboard', compact('sours'));
+        return view('my-sours', compact('sours'));
     }
 
     public function all()
