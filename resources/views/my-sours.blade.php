@@ -80,7 +80,7 @@
                                         x-on:click.away="isModalOpen = false"
                                         x-cloak
                                     >
-                                        <x-sours.edit-sour />
+                                        <x-sours.edit-sour :sour="$sour" />
                                     </div>
                                 </div>
                             </div>
