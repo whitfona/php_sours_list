@@ -32,7 +32,14 @@ class SourController extends Controller
     {
         $sours = auth()->user()->sours->sortByDesc('rating');
 
-        return view('dashboard', compact('sours'));
+        return view('my-sours', compact('sours'));
+    }
+
+    public function all()
+    {
+        $sours = Sour::all()->sortByDesc('rating');
+
+        return view('all-sours', compact('sours'));
     }
 
     public function show(Sour $sour)
@@ -69,7 +76,7 @@ class SourController extends Controller
     {
         $sour->delete();
 
-        return redirect('/dashboard')->with([
+        return redirect(route('sours.index'))->with([
             'type' => 'success',
             'message' => 'The sour was successfully deleted!'
         ]);

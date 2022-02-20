@@ -13,8 +13,9 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->prefix('/sours')->group(function() {
+    Route::get('/', [SourController::class, 'all'])->name('sours.all');
     Route::post('/', [SourController::class, 'store'])->name('sours.store');
-    Route::get('/', [SourController::class, 'index'])->name('sours.index');
+    Route::get('/my-sours', [SourController::class, 'index'])->name('sours.index');
     Route::get('/{sour}', [SourController::class, 'show'])->name('sours.show');
     Route::patch('/{sour}', [SourController::class, 'update'])->name('sours.update');
     Route::delete('/{sour}', [SourController::class, 'destroy'])->name('sours.delete');

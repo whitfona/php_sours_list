@@ -1,6 +1,6 @@
 <form method="POST" action="{{ route('sours.store') }}" class="p-2">
 @csrf
-
+    <h2 class="text-white text-center text-xl uppercase font-bold">Add Sour</h2>
 <!-- Name -->
     <div class="mt-4">
         <x-label for="name" :value="__('Name')" />

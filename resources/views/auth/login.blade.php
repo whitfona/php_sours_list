@@ -7,15 +7,15 @@
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
         <div class="text-center pb-4 ">
             <h2 class="font-medium text-3xl text-gray-700">Log In</h2>
             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                 {{ __('Need to Register?') }}
             </a>
         </div>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('login') }}">
             @csrf

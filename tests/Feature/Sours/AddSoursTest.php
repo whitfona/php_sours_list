@@ -4,6 +4,7 @@ namespace Tests\Feature\Sours;
 
 use App\Models\Sour;
 use App\Models\User;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
