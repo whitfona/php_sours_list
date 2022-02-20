@@ -12,7 +12,7 @@ Route::get('/', function () {
 //})->middleware(['auth'])->name('dashboard');
 
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->prefix('/sours')->group(function() {
     Route::get('/', [SourController::class, 'all'])->name('sours.all');
     Route::post('/', [SourController::class, 'store'])->name('sours.store');
     Route::get('/my-sours', [SourController::class, 'index'])->name('sours.index');

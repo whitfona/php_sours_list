@@ -4,12 +4,12 @@
             <x-logo />
         </x-slot>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
         <div class="text-center pb-4 ">
             <h2 class="font-medium text-3xl text-gray-700">Register</h2>
         </div>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('register') }}">
             @csrf

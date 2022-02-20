@@ -1,31 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Sours') }}
+            {{ __('All Sours') }}
         </h2>
     </x-slot>
-
-    <div x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
-        <div class="overlay" x-show="isModalOpen" x-cloak z-1></div>
-
-        <button x-on:click="isModalOpen = true" class="max-w-fit mx-auto sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
-            <x-plus-icon />
-            <p class="text-4xl text-white font-extrabold uppercase pl-3">Add Sour</p>
-        </button>
-
-        <!-- Add Sour Form -->
-        <div
-            class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded fixed top-[10%] left-[50%] w-[90%] -translate-x-2/4"
-            role="dialog"
-            tabindex="-1"
-            x-show="isModalOpen"
-            x-on:click.away="isModalOpen = false"
-            x-cloak
-        >
-            <x-sours.add-sour />
-        </div>
-    </div>
-
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -51,7 +29,9 @@
                                             @endif
                                         </h3>
                                     </div>
-                                    <p><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
+                                    <p class="mb-3"><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
+                                    <p><span class="text-md font-semibold tracking-wide uppercase">Added By:</span> {{ $sour->user->name }} | <time>{{ $sour->created_at->toDateString() }}</time>
+                                    </p>
                                 </div>
                             </div>
                         @endforeach

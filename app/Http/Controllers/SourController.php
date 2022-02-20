@@ -37,7 +37,7 @@ class SourController extends Controller
 
     public function all()
     {
-        $sours = Sour::all();
+        $sours = Sour::all()->sortByDesc('rating');
 
         return view('all-sours', compact('sours'));
     }
