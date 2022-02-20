@@ -62,9 +62,26 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
-                                            <p class="text-md text-white font-extrabold uppercase pl-3">Delete Sour</p>
+                                            <p class="text-md text-white font-extrabold uppercase">Delete Sour</p>
                                         </button>
                                     </form>
+
+                                    <!-- Edit Form Button -->
+                                    <button x-on:click="isModalOpen = true" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
+                                        <p class="text-md text-white font-extrabold uppercase">Edit Sour</p>
+                                    </button>
+
+                                    <!-- Edit Sour Form -->
+                                    <div
+                                        class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded fixed top-[10%] left-[50%] w-[90%] -translate-x-2/4"
+                                        role="dialog"
+                                        tabindex="-1"
+                                        x-show="isModalOpen"
+                                        x-on:click.away="isModalOpen = false"
+                                        x-cloak
+                                    >
+                                        <x-sours.edit-sour />
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
