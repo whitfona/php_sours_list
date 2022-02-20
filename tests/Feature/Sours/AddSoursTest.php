@@ -165,6 +165,14 @@ class AddSoursTest extends TestCase
                     ]
                 ],
             ],
+            'rating cannot be null' => [
+                'invalidAttribute' => $this->setInvalidAttribute('rating', null),
+                'errorMessage' => [
+                    'rating' => [
+                        'The rating field is required.'
+                    ]
+                ],
+            ],
             'rating must be a number' => [
                 'invalidAttribute' => $this->setInvalidAttribute('rating', 'hello'),
                 'errorMessage' => [
@@ -179,14 +187,6 @@ class AddSoursTest extends TestCase
                 'errorMessage' => [
                     'rating' => [
                         'The rating must be greater than or equal to 0.'
-                    ]
-                ],
-            ],
-            'hasLactose must a boolean' => [
-                'invalidAttribute' => $this->setInvalidAttribute('hasLactose', 'hello'),
-                'errorMessage' => [
-                    'hasLactose' => [
-                        'The has lactose field must be true or false.'
                     ]
                 ],
             ],
