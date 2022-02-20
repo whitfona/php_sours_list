@@ -15,7 +15,7 @@
 
         <!-- Add Sour Form -->
         <div
-            class="modal max-w-7xl sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded relative top-[10%] left-[50%] w-[90%] -translate-x-2/4"
+            class="modal max-w-7xl sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded absolute top-[10%] left-[50%] w-[90%] -translate-x-2/4"
             role="dialog"
             tabindex="-1"
             x-show="isModalOpen"
@@ -67,7 +67,7 @@
                                     </form>
 
                                     <!-- Edit Form Button -->
-                                    <button x-on:click="isModalOpen = true" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
+                                    <button x-on:click="isModalOpen = true" x-on:click.document="window.scrollTo(0, 0)" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
                                         <p class="text-md text-white font-extrabold uppercase">Edit Sour</p>
                                     </button>
 
