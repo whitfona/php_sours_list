@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sour;
+use Illuminate\Validation\Rule;
 
 class SourController extends Controller
 {
@@ -51,16 +52,11 @@ class SourController extends Controller
         return view('sours.show', compact('sour'));
     }
 
-    public function edit(Sour $sour)
-    {
-        return view('components.sours.edit-sour', compact('sour'));
-    }
-
     public function update(Sour $sour)
     {
         $validated = request()->validate([
             'company' => ['sometimes', 'required', 'string', 'max:100'],
-            'name' => ['sometimes', 'required', 'string', 'unique:sours,name', 'max:100'],
+            'name' => ['sometimes', 'required', 'string', Rule::unique('sours', 'name')->ignore($sour->id), 'max:100'],
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
