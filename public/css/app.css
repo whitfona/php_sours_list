@@ -599,12 +599,6 @@ select {
 .relative {
   position: relative;
 }
-.inset-0 {
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
 .top-0 {
   top: 0px;
 }
@@ -614,14 +608,20 @@ select {
 .left-0 {
   left: 0px;
 }
+.top-\[10\%\] {
+  top: 10%;
+}
+.left-\[50\%\] {
+  left: 50%;
+}
 .z-0 {
   z-index: 0;
 }
-.z-50 {
-  z-index: 50;
-}
 .z-10 {
   z-index: 10;
+}
+.z-50 {
+  z-index: 50;
 }
 .mx-auto {
   margin-left: auto;
@@ -720,9 +720,6 @@ select {
 .h-8 {
   height: 2rem;
 }
-.h-full {
-  height: 100%;
-}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -752,6 +749,9 @@ select {
 }
 .w-48 {
   width: 12rem;
+}
+.w-\[90\%\] {
+  width: 90%;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -787,6 +787,14 @@ select {
 }
 .origin-top-right {
   transform-origin: top right;
+}
+.translate-x-2\/4 {
+  --tw-translate-x: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-x-2\/4 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .scale-95 {
   --tw-scale-x: .95;
@@ -856,9 +864,6 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-.overflow-auto {
-  overflow: auto;
 }
 .overflow-hidden {
   overflow: hidden;
@@ -942,9 +947,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(251 207 232 / var(--tw-bg-opacity));
 }
-.bg-gray-500 {
+.bg-pink-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(249 168 212 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;
@@ -1165,9 +1170,6 @@ select {
 .opacity-100 {
   opacity: 1;
 }
-.opacity-50 {
-  opacity: 0.5;
-}
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -1229,9 +1231,6 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
-/*[x-cloak] {*/
-/*    display: none !important;*/
-/*}*/
 .overlay {
     width: 100%;
     height: 100%;
@@ -1240,6 +1239,7 @@ select {
     left: 0;
     background: black;
     opacity: 0.75;
+    z-index: 1;
 }
 .hover\:cursor-pointer:hover {
   cursor: pointer;
