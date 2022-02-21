@@ -5,27 +5,9 @@
         </h2>
     </x-slot>
 
-    <div x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
-        <div class="overlay" x-show="isModalOpen" x-cloak z-1></div>
-
-        <button x-on:click="isModalOpen = true" class="max-w-fit mx-auto sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300">
-            <x-plus-icon />
-            <p class="text-4xl text-white font-extrabold uppercase pl-3">Add Sour</p>
-        </button>
-
-        <!-- Add Sour Form -->
-        <div
-            class="modal max-w-7xl sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded absolute top-[10%] left-[50%] w-[90%] -translate-x-2/4"
-            role="dialog"
-            tabindex="-1"
-            x-show="isModalOpen"
-            x-on:click.away="isModalOpen = false"
-            x-cloak
-        >
-            <x-sours.add-sour />
-        </div>
-    </div>
-
+    <x-modal-add buttonText="Add Sour">
+        <x-sours.add-sour />
+    </x-modal-add>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,7 +24,7 @@
                                     </div>
                                     <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
-                                        <x-h3-output subheading="Company" value="{{ $sour->company }}%" />
+                                        <x-h3-output subheading="Company" value="{{ $sour->company }}" />
                                         <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                             @if($sour->hasLactose == 1)
                                                 Yes
@@ -54,34 +36,9 @@
                                     <p><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
                                 </div>
                             </div>
-                            <div x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
-                                <div class="overlay" x-show="isModalOpen" x-cloak z-1></div>
-                                <!-- Delete Sour -->
-                                <form method="POST" onclick="return confirm('Are you sure you want to delete this sour?')" action="/sours/{{ $sour->id }}" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline">
-                                        <p class="text-md text-white font-extrabold uppercase">Delete Sour</p>
-                                    </button>
-                                </form>
-
-                                <!-- Edit Form Button -->
-                                <button x-on:click="isModalOpen = true" x-on:click.document="window.scrollTo(0, 0)" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
-                                    <p class="text-md text-white font-extrabold uppercase">Edit Sour</p>
-                                </button>
-
-                                <!-- Edit Sour Form -->
-                                <div
-                                    class="modal max-w-7xl mx-auto sm:px-6 lg:px-8 py-6 z-10 bg-pink-300 rounded absolute top-[10%] left-[50%] w-[90%] -translate-x-2/4"
-                                    role="dialog"
-                                    tabindex="1"
-                                    x-show="isModalOpen"
-                                    x-on:click.away="isModalOpen = false"
-                                    x-cloak
-                                >
-                                    <x-sours.edit-sour :sour="$sour" />
-                                </div>
-                            </div>
+                            <x-modal-edit buttonText="Edit Sour" :sour="$sour" >
+                                <x-sours.edit-sour :sour="$sour" />
+                            </x-modal-edit>
                         </div>
                     @empty
                         <h2>You have not added any sours!</h2>
