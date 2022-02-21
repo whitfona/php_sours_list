@@ -10,7 +10,7 @@
     </form>
 
     <!-- Edit Form Button -->
-    <button x-on:click="isModalOpen = true" x-on:click.document="window.scrollTo(0, 0)" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
+    <button x-on:click="isModalOpen = true, window.scrollTo(0, 0)" class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 ml-4">
         <p class="text-md text-white font-extrabold uppercase">{{ $buttonText }}</p>
     </button>
 
