@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('All Sours') }}
         </h2>
+
+        <!-- Search Bar -->
+        <form action="{{ route('sours.all') }}" method="GET">
+            <x-inputs.input class="mt-2" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
+        </form>
+
     </x-slot>
 
     <div class="py-6">
