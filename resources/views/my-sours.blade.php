@@ -41,8 +41,8 @@
                                         <h2 class="text-lg"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
                                     </div>
                                     <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
-                                        <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Percent:</span> {{ $sour->percent }}%</h3>
-                                        <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Company:</span> {{ $sour->company }}</h3>
+                                        <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
+                                        <x-h3-output subheading="Company" value="{{ $sour->company }}%" />
                                         <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                             @if($sour->hasLactose == 1)
                                                 Yes
