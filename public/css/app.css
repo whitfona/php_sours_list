@@ -623,9 +623,6 @@ select {
 .z-50 {
   z-index: 50;
 }
-.z-20 {
-  z-index: 20;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1412,14 +1409,6 @@ select {
     margin-left: 1.5rem;
   }
 
-  .sm\:mb-6 {
-    margin-bottom: 1.5rem;
-  }
-
-  .sm\:mb-8 {
-    margin-bottom: 2rem;
-  }
-
   .sm\:block {
     display: block;
   }
@@ -1474,10 +1463,6 @@ select {
   }
 }
 @media (min-width: 768px) {
-
-  .md\:mb-0 {
-    margin-bottom: 0px;
-  }
 
   .md\:flex {
     display: flex;
