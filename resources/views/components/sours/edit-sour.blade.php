@@ -23,7 +23,7 @@
     <!-- Rating & Percent -->
     <div class="mt-4 flex gap-4">
         <div>
-            <x-inputs.label for="rating" :value="__('Rating')" />
+            <x-inputs.label for="rating" :value="__('Rating (as decimal number)')" />
 
             <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating', $sour->rating)" />
 
@@ -31,7 +31,7 @@
         </div>
 
         <div>
-            <x-inputs.label for="percent" :value="__('Percent')" />
+            <x-inputs.label for="percent" :value="__('Percent (as decimal number)')" />
 
             <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent', $sour->percent)" />
 
