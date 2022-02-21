@@ -200,17 +200,7 @@ class EditSourTest extends TestCase
                         "The rating must be greater than or equal to 0."
                     ]
                 ]
-            ],
-            'hasLactose must be a boolean' => [
-                'attribute' => 'hasLactose',
-                'attributeValue' => -6.9,
-                'errorMessage' => [
-                    "hasLactose" => [
-                        "The has lactose field must be true or false."
-                    ]
-                ]
             ]
-
         ];
     }
 }

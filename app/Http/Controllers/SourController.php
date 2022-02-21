@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sour;
+use Illuminate\Validation\Rule;
 
 class SourController extends Controller
 {
@@ -55,18 +56,20 @@ class SourController extends Controller
     {
         $validated = request()->validate([
             'company' => ['sometimes', 'required', 'string', 'max:100'],
-            'name' => ['sometimes', 'required', 'string', 'unique:sours,name', 'max:100'],
-            'percent' => ['sometimes', 'numeric', 'gte:0'],
-            'comments' => ['sometimes', 'string', 'max:280'],
-            'rating' => ['sometimes', 'numeric', 'gte:0'],
-            'hasLactose' => ['sometimes', 'boolean'],
+            'name' => ['sometimes', 'required', 'string', Rule::unique('sours', 'name')->ignore($sour->id), 'max:100'],
+            'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
+            'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
+            'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
+        $validated['hasLactose'] = request()->has('hasLactose');
+
+
         $sour->update($validated);
 
-        return redirect('/dashboard')->with([
+        return redirect(route('sours.index'))->with([
             'type' => 'success',
             'message' => 'The sour was successfully deleted!'
         ]);
