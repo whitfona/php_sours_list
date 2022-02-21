@@ -753,6 +753,18 @@ select {
 .w-48 {
   width: 12rem;
 }
+.min-w-\[32\] {
+  min-width: 32;
+}
+.min-w-\[32px\] {
+  min-width: 32px;
+}
+.min-w-\[50\%\] {
+  min-width: 50%;
+}
+.min-w-\[15\%\] {
+  min-width: 15%;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -838,6 +850,9 @@ select {
 .justify-between {
   justify-content: space-between;
 }
+.justify-evenly {
+  justify-content: space-evenly;
+}
 .gap-2 {
   gap: 0.5rem;
 }
@@ -860,6 +875,9 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.justify-self-start {
+  justify-self: start;
 }
 .overflow-hidden {
   overflow: hidden;
