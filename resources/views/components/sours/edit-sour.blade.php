@@ -56,7 +56,7 @@
     <div class="mt-4">
         <x-inputs.label for="comments" :value="__('Comments')" />
 
-        <x-textarea id="comments" class="block mt-1 w-full" rows="4" name="comments" :value="old('comments', $sour->comments)" />
+        <x-inputs.textarea id="comments" class="block mt-1 w-full" rows="4" name="comments" :value="old('comments', $sour->comments)" />
 
         <x-inputs.error name="comments" />
     </div>
