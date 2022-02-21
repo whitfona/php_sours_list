@@ -8,7 +8,6 @@
         <form action="{{ route('sours.all') }}" method="GET">
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
-
     </x-slot>
 
     <div class="py-6">

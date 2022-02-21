@@ -3,6 +3,11 @@
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('My Sours') }}
         </h2>
+
+        <!-- Search Bar -->
+        <form action="{{ route('sours.index') }}" method="GET">
+            <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
+        </form>
     </x-slot>
 
     <x-modal-add buttonText="Add Sour">

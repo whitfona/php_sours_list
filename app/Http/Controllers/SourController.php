@@ -31,9 +31,9 @@ class SourController extends Controller
 
     public function index()
     {
-        $sours = auth()->user()->sours()->orderBy('rating', 'DESC')->paginate(10);
-
-        return view('my-sours', compact('sours'));
+        return view('my-sours', [
+            'sours' => auth()->user()->sours()->filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+        ]);
     }
 
     public function all()
