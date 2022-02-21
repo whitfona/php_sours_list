@@ -36,6 +36,7 @@
                     @empty
                         <h2>No sours to display!</h2>
                     @endforelse
+                    {{ $sours->links() }}
                 </div>
             </div>
         </div>

@@ -43,7 +43,8 @@
                     @empty
                         <h2>You have not added any sours!</h2>
                     @endforelse
-                </div>
+                    {{ $sours->links() }}
+            </div>
             </div>
         </div>
     </div>
