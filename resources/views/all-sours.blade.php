@@ -14,8 +14,8 @@
                             <img class="md:max-w-xs" src="../images/beer.jpeg">
                             <div class="sm:mt-4 w-full">
                                 <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
-                                    <h2 class="text-lg w-32"><span class="font-semibold tracking-wide uppercase">Rating:</span> {{ $sour->rating }}</h2>
-                                    <h2 class="text-lg"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
+                                    <h2 class="text-lg min-w-[15%]"><span class="font-semibold tracking-wide uppercase">Rating:</span> {{ $sour->rating }}</h2>
+                                    <h2 class="text-lg min-w-[15%]"><span class="font-semibold tracking-wide uppercase">Name:</span> {{ $sour->name }}</h2>
                                 </div>
                                 <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Percent:</span> {{ $sour->percent }}%</h3>
