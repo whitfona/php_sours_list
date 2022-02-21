@@ -3,7 +3,7 @@
     <h2 class="text-white text-center text-xl uppercase font-bold">Add Sour</h2>
 <!-- Name -->
     <div class="mt-4">
-        <x-label for="name" :value="__('Name')" />
+        <x-inputs.label for="name" :value="__('Name')" />
 
         <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
 
@@ -12,7 +12,7 @@
 
     <!-- Company -->
     <div class="mt-4">
-        <x-label for="company" :value="__('Company')" />
+        <x-inputs.label for="company" :value="__('Company')" />
 
         <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company')" required />
 
@@ -22,7 +22,7 @@
     <!-- Rating & Percent -->
     <div class="mt-4 flex gap-4">
         <div>
-            <x-label for="rating" :value="__('Rating')" />
+            <x-inputs.label for="rating" :value="__('Rating')" />
 
             <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating')" />
 
@@ -30,7 +30,7 @@
         </div>
 
         <div>
-            <x-label for="percent" :value="__('Percent')" />
+            <x-inputs.label for="percent" :value="__('Percent')" />
 
             <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent')" />
 
@@ -40,7 +40,7 @@
 
     <!-- HasLactose -->
     <div class="mt-4">
-        <x-label for="hasLactose" :value="__('Has Lactose?')" class="inline" />
+        <x-inputs.label for="hasLactose" :value="__('Has Lactose?')" class="inline" />
 
         <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
 
@@ -49,7 +49,7 @@
 
     <!-- Comments -->
     <div class="mt-4">
-        <x-label for="comments" :value="__('Comments')" />
+        <x-inputs.label for="comments" :value="__('Comments')" />
 
         <x-textarea id="comments" class="block mt-1 w-full" rows="4" name="comments" :value="old('comments')" />
 
