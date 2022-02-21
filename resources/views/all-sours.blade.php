@@ -8,7 +8,7 @@
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-6">
                     @forelse($sours as $sour)
                         <div class="md:flex gap-4 mb-8">
                             <img class="md:max-w-xs" src="../images/beer.jpeg">
