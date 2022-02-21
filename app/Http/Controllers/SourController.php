@@ -31,16 +31,16 @@ class SourController extends Controller
 
     public function index()
     {
-        $sours = auth()->user()->sours->sortByDesc('rating');
-
-        return view('my-sours', compact('sours'));
+        return view('my-sours', [
+            'sours' => auth()->user()->sours()->filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+        ]);
     }
 
     public function all()
     {
-        $sours = Sour::all()->sortByDesc('rating');
-
-        return view('all-sours', compact('sours'));
+        return view('all-sours', [
+            'sours' => Sour::filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+        ]);
     }
 
     public function show(Sour $sour)

@@ -3,6 +3,11 @@
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('All Sours') }}
         </h2>
+
+        <!-- Search Bar -->
+        <form action="{{ route('sours.all') }}" method="GET">
+            <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
+        </form>
     </x-slot>
 
     <div class="py-6">
@@ -12,7 +17,7 @@
                     @forelse($sours as $sour)
                         <div class="md:flex gap-4 mb-8">
                             <img class="md:max-w-xs" src="../images/beer.jpeg">
-                            <div class="sm:mt-4 w-full">
+                            <div class="w-full">
                                 <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
                                     <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
                                     <x-h2-output subheading="Name" value="{{ $sour->name }}" />
@@ -36,6 +41,7 @@
                     @empty
                         <h2>No sours to display!</h2>
                     @endforelse
+                    {{ $sours->links() }}
                 </div>
             </div>
         </div>
