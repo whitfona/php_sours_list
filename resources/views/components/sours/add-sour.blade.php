@@ -57,7 +57,7 @@
     </div>
 
 
-    <x-button class="mt-6">
+    <x-inputs.button class="mt-6">
         {{ __('Add Sour') }}
-    </x-button>
+    </x-inputs.button>
 </form>

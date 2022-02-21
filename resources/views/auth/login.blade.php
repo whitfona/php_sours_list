@@ -52,9 +52,9 @@
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-inputs.button class="ml-3">
                     {{ __('Log in') }}
-                </x-button>
+                </x-inputs.button>
             </div>
         </form>
     </x-auth-card>
