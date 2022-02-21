@@ -22,9 +22,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('Passw0rd!'),
         ]);
 
-        //create 3 sours for user 1
         Sour::factory(3)->create(['user_id' => $user->id]);
-        // create 10 other random sours
         Sour::factory(10)->create();
     }
 }
