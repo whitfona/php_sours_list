@@ -8,7 +8,7 @@
 
         <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $sour->name)" required autofocus />
 
-        <x-error name="name" />
+        <x-inputs.error name="name" />
     </div>
 
     <!-- Company -->
@@ -17,7 +17,7 @@
 
         <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company', $sour->company)" required />
 
-        <x-error name="company" />
+        <x-inputs.error name="company" />
     </div>
 
     <!-- Rating & Percent -->
@@ -27,7 +27,7 @@
 
             <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating', $sour->rating)" />
 
-            <x-error name="rating" />
+            <x-inputs.error name="rating" />
         </div>
 
         <div>
@@ -35,7 +35,7 @@
 
             <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent', $sour->percent)" />
 
-            <x-error name="percent" />
+            <x-inputs.error name="percent" />
         </div>
     </div>
 
@@ -49,7 +49,7 @@
         <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
         @endif
 
-        <x-error name="hasLactose" />
+        <x-inputs.error name="hasLactose" />
     </div>
 
     <!-- Comments -->
@@ -58,7 +58,7 @@
 
         <x-textarea id="comments" class="block mt-1 w-full" rows="4" name="comments" :value="old('comments', $sour->comments)" />
 
-        <x-error name="comments" />
+        <x-inputs.error name="comments" />
     </div>
 
 
