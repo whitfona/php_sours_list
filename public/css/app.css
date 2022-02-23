@@ -651,6 +651,9 @@ select {
 .ml-4 {
   margin-left: 1rem;
 }
+.mt-2 {
+  margin-top: 0.5rem;
+}
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -665,9 +668,6 @@ select {
 }
 .mt-3 {
   margin-top: 0.75rem;
-}
-.mt-2 {
-  margin-top: 0.5rem;
 }
 .mr-2 {
   margin-right: 0.5rem;
@@ -753,9 +753,6 @@ select {
 .w-48 {
   width: 12rem;
 }
-.w-36 {
-  width: 9rem;
-}
 .min-w-\[15\%\] {
   min-width: 15%;
 }
@@ -813,9 +810,6 @@ select {
 }
 .cursor-default {
   cursor: default;
-}
-.cursor-pointer {
-  cursor: pointer;
 }
 .list-inside {
   list-style-position: inside;
@@ -1406,16 +1400,16 @@ select {
     margin-bottom: -1px;
   }
 
-  .sm\:mt-4 {
-    margin-top: 1rem;
-  }
-
   .sm\:ml-10 {
     margin-left: 2.5rem;
   }
 
   .sm\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .sm\:mt-4 {
+    margin-top: 1rem;
   }
 
   .sm\:block {
@@ -1475,10 +1469,6 @@ select {
 
   .md\:flex {
     display: flex;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-1\/3 {

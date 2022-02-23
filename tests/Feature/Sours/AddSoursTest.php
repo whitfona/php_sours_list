@@ -4,8 +4,8 @@ namespace Tests\Feature\Sours;
 
 use App\Models\Sour;
 use App\Models\User;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -31,7 +31,8 @@ class AddSoursTest extends TestCase
 
     public function test_new_sour_can_be_added_by_authenticated_user()
     {
-        $this->actingAs(User::factory()->create());
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
         $attributes = [
             'company' => 'Fixed Gear Brewing',
@@ -40,12 +41,13 @@ class AddSoursTest extends TestCase
             'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
             'rating' => 9,
             'hasLactose' => true,
+            'image' => UploadedFile::fake()->image('test-image.png')
         ];
 
-        $this->postJson(route('sours.store'), $attributes);
+        $this->postJson(route('sours.store'), $attributes)
+            ->assertRedirect(route('sours.index'));
 
-        $this->assertDatabaseHas('sours', $attributes);
-
+//        $this->assertDatabaseHas('sours', $attributes);
     }
 
     public function test_new_sour_has_unique_name()
@@ -188,6 +190,22 @@ class AddSoursTest extends TestCase
                 'errorMessage' => [
                     'rating' => [
                         'The rating must be greater than or equal to 0.'
+                    ]
+                ],
+            ],
+            'image must be jpg, jpeg, png, bmp, gif, svg, or webp' => [
+                'invalidAttribute' => $this->setInvalidAttribute('image', UploadedFile::fake()->create('test.pdf', 0, 'pdf')),
+                'errorMessage' => [
+                    'image' => [
+                        'The image must be an image.'
+                    ]
+                ],
+            ],
+            'image must be less than 3 MB' => [
+                'invalidAttribute' => $this->setInvalidAttribute('image', UploadedFile::fake()->create('test.png', 3001)),
+                'errorMessage' => [
+                    'image' => [
+                        'The image must not be greater than 3000 kilobytes.'
                     ]
                 ],
             ],
