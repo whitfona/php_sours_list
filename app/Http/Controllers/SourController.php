@@ -21,6 +21,8 @@ class SourController extends Controller
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
+
+        if (request()->file('image'))
         $validated['image'] = request()->file('image')->store('sours');
 
         auth()->user()->sours()->create($validated);
