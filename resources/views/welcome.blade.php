@@ -24,7 +24,7 @@
                 <div class="hidden max-w-lg mx-auto text-right px-6 py-4 sm:block">
 {{--                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">--}}
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Dashboard</a>
+                        <a href="{{ url('/sours') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Log in</a>
 

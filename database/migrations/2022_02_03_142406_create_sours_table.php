@@ -22,6 +22,7 @@ class CreateSoursTable extends Migration
             $table->string('comments')->nullable();
             $table->float('rating');
             $table->boolean('hasLactose')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

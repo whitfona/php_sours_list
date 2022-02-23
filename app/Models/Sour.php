@@ -9,7 +9,7 @@ class Sour extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'company', 'name', 'percent', 'comments', 'rating', 'hasLactose'];
+    protected $fillable = ['user_id', 'company', 'name', 'percent', 'comments', 'rating', 'hasLactose', 'image'];
 
     protected $casts = [
         'hasLactose' => 'boolean',

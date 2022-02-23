@@ -15,11 +15,13 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
+            'image' => ['sometimes', 'image', 'max:3000', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
+        $validated['image'] = request()->file('image')->store('sours');
 
         auth()->user()->sours()->create($validated);
 
@@ -60,12 +62,15 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
+            'image' => ['sometimes', 'image', 'max:3000', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
-
+        if (request()->has('image')) {
+            $validated['image'] = request()->file('image')->store('sours');
+        }
 
         $sour->update($validated);
 

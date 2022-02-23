@@ -21,7 +21,13 @@
                     @forelse($sours as $sour)
                         <div class="mb-8">
                             <div class="md:flex gap-4">
-                                <img class="md:max-w-xs" src="../images/beer.jpeg">
+                                <img class="md:w-80"
+                                     @if($sour->image)
+                                        src="{{ asset('storage/' . $sour->image) }}"
+                                     @else
+                                        src="{{ asset('storage/sours/empty-sour-glass.png') }}"
+                                     @endif
+                                >
                                 <div class="pt-6 md:pt-0 w-full">
                                     <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
                                         <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
