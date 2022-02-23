@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('sours.update', $sour->id) }}" class="p-2">
+<form method="POST" action="{{ route('sours.update', $sour->id) }}" class="p-2" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <h2 class="text-white text-center text-xl uppercase font-bold">Edit Sour</h2>
@@ -59,6 +59,15 @@
         <x-inputs.textarea id="comments" class="block mt-1 w-full" rows="4" name="comments" :value="old('comments', $sour->comments)" />
 
         <x-inputs.error name="comments" />
+    </div>
+
+    <!-- Image -->
+    <div class="mt-4">
+        <x-inputs.label for="image" :value="__('Image')" />
+
+        <x-inputs.input id="image" class="block mt-1 w-full rounded-none" type="file" name="image" :value="old('image')" />
+
+        <x-inputs.error name="image" />
     </div>
 
 

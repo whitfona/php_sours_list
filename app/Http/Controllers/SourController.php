@@ -21,8 +21,6 @@ class SourController extends Controller
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
-
-        if (request()->file('image'))
         $validated['image'] = request()->file('image')->store('sours');
 
         auth()->user()->sours()->create($validated);
@@ -70,7 +68,9 @@ class SourController extends Controller
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
-        $validated['image'] = request()->file('image')->store('sours');
+        if (request()->has('image')) {
+            $validated['image'] = request()->file('image')->store('sours');
+        }
 
         $sour->update($validated);
 
