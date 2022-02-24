@@ -50,19 +50,22 @@ class AddSoursTest extends TestCase
 //        $this->assertDatabaseHas('sours', $attributes);
     }
 
-    public function test_new_sour_has_unique_name()
+    public function test_user_cannot_add_sour_they_have_already_added()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $sour = Sour::factory()->create();
-        $secondSour = Sour::factory()->raw(['name' => $sour->name]);
+        $sour = Sour::factory()->create(['user_id' => $user->id]);
+        $secondSour = Sour::factory()->raw([
+            'user_id' => $user->id,
+            'name' => $sour->name
+        ]);
 
         $this->postJson(route('sours.store'), $secondSour)
             ->assertUnprocessable()
             ->assertExactJson([
                 "errors" => [
-                    "image"=> [
+                    "image" => [
                         "The image must be an image."
                     ],
                     "name" => [

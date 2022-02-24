@@ -56,7 +56,7 @@ class EditSourTest extends TestCase
     public function test_error_thrown_if_updated_name_is_not_unique()
     {
         $this->actingAs(User::factory()->create());
-        $sour = Sour::factory()->create(['name' => 'Not a unique name']);
+        Sour::factory()->create(['name' => 'Not a unique name']);
         $sourToUpdate = Sour::factory()->create();
 
         $this->patchJson(route('sours.update', $sourToUpdate), [

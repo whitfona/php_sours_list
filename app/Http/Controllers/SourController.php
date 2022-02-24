@@ -11,7 +11,9 @@ class SourController extends Controller
     {
         $validated = request()->validate([
             'company' => ['required', 'string', 'max:100'],
-            'name' => ['required', 'string', 'unique:sours,name', 'max:100'],
+            'name' => ['required', 'string', Rule::unique('sours', 'name')->where(function ($query) {
+                return $query->where('user_id', Auth()->id());
+            }), 'max:100'],
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
@@ -21,7 +23,9 @@ class SourController extends Controller
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
-        $validated['image'] = request()->file('image')->store('sours');
+        if (request()->has('image')) {
+            $validated['image'] = request()->file('image')->store('sours');
+        }
 
         auth()->user()->sours()->create($validated);
 
