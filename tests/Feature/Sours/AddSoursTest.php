@@ -52,7 +52,8 @@ class AddSoursTest extends TestCase
 
     public function test_new_sour_has_unique_name()
     {
-        $this->actingAs(User::factory()->create());
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
         $sour = Sour::factory()->create();
         $secondSour = Sour::factory()->raw(['name' => $sour->name]);
@@ -61,6 +62,9 @@ class AddSoursTest extends TestCase
             ->assertUnprocessable()
             ->assertExactJson([
                 "errors" => [
+                    "image"=> [
+                        "The image must be an image."
+                    ],
                     "name" => [
                         "That sour has already been rated!"
                     ]
