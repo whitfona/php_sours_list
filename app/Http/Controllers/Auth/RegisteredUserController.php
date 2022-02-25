@@ -64,6 +64,11 @@ class RegisteredUserController extends Controller
 
     public function update(User $user)
     {
+        $validated = \request()->validate([
+            'name' => ['required'],
+            'email' => ''
+        ]);
 
+        $user->update($validated);
     }
 }
