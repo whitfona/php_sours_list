@@ -23,9 +23,9 @@
                             <div class="md:flex gap-4">
                                 <img class="md:w-80"
                                      @if($sour->image)
-                                        src="{{ asset('storage/' . $sour->image) }}"
+                                        src="{{ asset('storage/sours/' . $sour->image) }}"
                                      @else
-                                        src="{{ asset('storage/sours/empty-sour-glass.png') }}"
+                                        src="{{ asset('storage/sours/zzzzempty-sour-glass.png') }}"
                                      @endif
                                 >
                                 <div class="pt-6 md:pt-0 w-full">

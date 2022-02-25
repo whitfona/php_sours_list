@@ -65,9 +65,6 @@ class AddSoursTest extends TestCase
             ->assertUnprocessable()
             ->assertExactJson([
                 "errors" => [
-                    "image" => [
-                        "The image must be an image."
-                    ],
                     "name" => [
                         "That sour has already been rated!"
                     ]
@@ -204,7 +201,7 @@ class AddSoursTest extends TestCase
                 'invalidAttribute' => $this->setInvalidAttribute('image', UploadedFile::fake()->create('test.pdf', 0, 'pdf')),
                 'errorMessage' => [
                     'image' => [
-                        'The image must be an image.'
+                        "The image must be a file of type: heic, jpg, jpeg, png, bmp, gif, svg, webp."
                     ]
                 ],
             ],

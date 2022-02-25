@@ -24,7 +24,7 @@ class SourFactory extends Factory
             'comments' => $this->faker->paragraph,
             'rating' => $this->faker->randomFloat(1, 0, 10),
             'hasLactose' => $this->faker->boolean,
-            'image' => $this->faker->image,
+            'image' => null,
         ];
     }
 }
