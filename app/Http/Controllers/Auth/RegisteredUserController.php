@@ -61,4 +61,9 @@ class RegisteredUserController extends Controller
     {
         return view('auth.edit-profile');
     }
+
+    public function update(User $user)
+    {
+
+    }
 }

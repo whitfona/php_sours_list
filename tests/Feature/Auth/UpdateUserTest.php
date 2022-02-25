@@ -24,15 +24,17 @@ class UpdateUserTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->patch(route('update-user', $user), ['name' => 'Nick'])
+        $this->patch(route('users.update', $user), ['name' => 'Nick'])
             ->assertOk();
+
+        $this->assertDatabaseHas(User::all()->first(), $user->toArray());
     }
 
     public function test_unauthenticated_user_can_not_update_a_profile()
     {
         $user = User::factory()->create();
 
-        $this->patch(route('update-user', $user), ['name' => 'Nick']);
+        $this->patch(route('users.update', $user), ['name' => 'Nick']);
 
         $this->assertGuest();
     }

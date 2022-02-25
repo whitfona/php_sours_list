@@ -20,6 +20,9 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
 Route::get('/users/{user}/edit', [RegisteredUserController::class, 'edit'])
                 ->middleware('guest')->name('users.edit');
 
+Route::patch('/users/{user}', [RegisteredUserController::class, 'update'])
+                ->middleware('guest')->name('users.update');
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
