@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
         $validated = \request()->validate([
             'name' => ['sometimes', 'required', 'string', 'max:255'],
             'email' => ['sometimes', 'required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
-            'profileImage' => ''
+            'profileImage' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
         ]);
 
         $user->update($validated);

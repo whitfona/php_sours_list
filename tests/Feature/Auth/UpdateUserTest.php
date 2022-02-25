@@ -185,6 +185,24 @@ class UpdateUserTest extends TestCase
                     ]
                 ]
             ],
+            'image must be of type: heic, jpg, jpeg, png, bmp, gif, svg, webp.' => [
+                'attribute' => 'profileImage',
+                'attributeValue' => 'test',
+                'errorMessage' => [
+                    "profileImage" => [
+                        "The profile image must be a file of type: heic, jpg, jpeg, png, bmp, gif, svg, webp."
+                    ]
+                ]
+            ],
+            'image must be less than 3MB' => [
+                'attribute' => 'profileImage',
+                'attributeValue' => UploadedFile::fake()->create('image.png', 3001),
+                'errorMessage' => [
+                    "profileImage" => [
+                        "The profile image must not be greater than 3000 kilobytes."
+                    ]
+                ]
+            ],
         ];
     }
 }
