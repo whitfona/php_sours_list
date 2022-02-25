@@ -64,11 +64,11 @@ class RegisteredUserController extends Controller
 
     public function update(User $user)
     {
-//        $validated = \request()->validate([
-//            'name' => ['required'],
-//            'email' => ''
-//        ]);
-        $validated = \request()->all();
+        $validated = \request()->validate([
+            'name' => ['sometimes', 'required', 'string', 'max:255'],
+            'email' => '',
+            'profileImage' => ''
+        ]);
 
         $user->update($validated);
     }

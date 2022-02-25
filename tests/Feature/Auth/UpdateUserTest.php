@@ -67,35 +67,55 @@ class UpdateUserTest extends TestCase
         $this->assertGuest();
     }
 
-//    /**
-//     * @dataProvider InvalidUserUpdateData
-//     */
-//    public function test_error_thrown_with_invalid_inputs($attribute, $attributeValue)
-//    {
-//        $user = User::factory()->create();
-//        $this->actingAs($user);
-//
-//        $this->patchJson(route('users.update', $user), [
-//            $attribute => $attributeValue
-//            ])
-//            ->assertUnprocessable()
-//            ->assertExactJson([
-//                "errors" => [
-//                "name" => [
-//                    "The name field is required."
-//                ]
-//            ],
-//            "message" => "The given data was invalid."
-//            ]);
-//    }
-//
-//    public function InvalidUserUpdateData()
-//    {
-//        return [
-//            'name cannot be null' => [
-//                'attribute' => 'name',
-//                'attributeValue' => null
-//            ]
-//        ];
-//    }
+    /**
+     * @dataProvider InvalidUserUpdateData
+     */
+    public function test_error_thrown_with_invalid_inputs($attribute, $attributeValue, $errorMessage)
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $this->patchJson(route('users.update', $user), [
+            $attribute => $attributeValue
+            ])
+            ->assertUnprocessable()
+            ->assertExactJson([
+                "errors" => $errorMessage
+            ,
+            "message" => "The given data was invalid."
+            ]);
+    }
+
+    public function InvalidUserUpdateData()
+    {
+        return [
+            'name cannot be null' => [
+                'attribute' => 'name',
+                'attributeValue' => null,
+                'errorMessage' => [
+                    "name" => [
+                        "The name field is required."
+                    ]
+                ]
+            ],
+            'name must be a string' => [
+                'attribute' => 'name',
+                'attributeValue' => [-1],
+                'errorMessage' => [
+                    "name" => [
+                        "The name must be a string."
+                    ]
+                ]
+            ],
+            'name must be less than 255 characters' => [
+                'attribute' => 'name',
+                'attributeValue' => str_repeat('a', 256),
+                'errorMessage' => [
+                    "name" => [
+                        "The name must not be greater than 255 characters."
+                    ]
+                ]
+            ]
+        ];
+    }
 }
