@@ -18,10 +18,10 @@
                         <div class="md:flex gap-4 mb-8">
                             <img class="md:max-w-xs"
                                  @if($sour->image)
-                                     src="{{ asset('storage/' . $sour->image) }}"
-                                @else
-                                    src="{{ asset('storage/sours/empty-sour-glass.png') }}"
-                                @endif
+                                    src="{{ asset('storage/sours/' . $sour->image) }}"
+                                 @else
+                                     src="{{ asset('storage/sours/zzzzempty-sour-glass.png') }}"
+                                 @endif
                             >
                             <div class="w-full">
                                 <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sour;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class SourController extends Controller
 {
@@ -17,14 +18,15 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
-            'image' => ['sometimes', 'image', 'max:3000', 'nullable']
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
         if (request()->has('image')) {
-            $validated['image'] = request()->file('image')->store('sours');
+            $validated['image'] = time() . '.' . 'jpg';
+            Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
         }
 
         auth()->user()->sours()->create($validated);
@@ -66,14 +68,15 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
-            'image' => ['sometimes', 'image', 'max:3000', 'nullable']
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
         if (request()->has('image')) {
-            $validated['image'] = request()->file('image')->store('sours');
+            $validated['image'] = time() . '.' . 'jpg';
+            Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
         }
 
         $sour->update($validated);

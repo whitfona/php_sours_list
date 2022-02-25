@@ -26,7 +26,7 @@ class EditSourTest extends TestCase
             'comments' => 'Updated comments',
             'rating' => 10,
             'hasLactose' => true,
-            'image' => UploadedFile::fake()->create('test.jpg')
+            'image' => UploadedFile::fake()->image('test.jpg'),
             ])
         ->assertRedirect(route('sours.index'));
 
@@ -209,7 +209,7 @@ class EditSourTest extends TestCase
                 'attributeValue' => UploadedFile::fake()->create('test.pdf', 1, 'pdf'),
                 'errorMessage' => [
                     'image' => [
-                        'The image must be an image.'
+                        "The image must be a file of type: heic, jpg, jpeg, png, bmp, gif, svg, webp."
                     ]
                 ],
             ],
