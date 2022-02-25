@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -66,7 +67,7 @@ class RegisteredUserController extends Controller
     {
         $validated = \request()->validate([
             'name' => ['sometimes', 'required', 'string', 'max:255'],
-            'email' => '',
+            'email' => ['sometimes', 'required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
             'profileImage' => ''
         ]);
 

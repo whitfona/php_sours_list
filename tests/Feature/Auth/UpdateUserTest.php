@@ -67,6 +67,38 @@ class UpdateUserTest extends TestCase
         $this->assertGuest();
     }
 
+    public function test_email_must_be_unique_to_other_users()
+    {
+        User::factory()->create(['email' => 'test@test.com']);
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $this->patchJson(route('users.update', $user), [
+            'email' => 'test@test.com'
+        ])
+            ->assertUnprocessable()
+            ->assertExactJson([
+                "errors" => [
+                    "email" => [
+                        "The email has already been taken."
+                    ]
+                ]
+                ,
+                "message" => "The given data was invalid."
+            ]);
+    }
+
+    public function test_email_can_be_users_original_email()
+    {
+        $user = User::factory()->create(['email' => 'test@test.com']);
+        $this->actingAs($user);
+
+        $this->patchJson(route('users.update', $user), [
+            'email' => 'test@test.com'
+        ])
+            ->assertOk();
+    }
+
     /**
      * @dataProvider InvalidUserUpdateData
      */
@@ -115,7 +147,44 @@ class UpdateUserTest extends TestCase
                         "The name must not be greater than 255 characters."
                     ]
                 ]
-            ]
+            ],
+            'email must not be null' => [
+                'attribute' => 'email',
+                'attributeValue' => null,
+                'errorMessage' => [
+                    "email" => [
+                        "The email field is required."
+                    ]
+                ]
+            ],
+            'email must be a string' => [
+                'attribute' => 'email',
+                'attributeValue' => [-1],
+                'errorMessage' => [
+                    "email" => [
+                        'The email must be a string.',
+                        'The email must be a valid email address.'
+                    ]
+                ]
+            ],
+            'email must be an email' => [
+                'attribute' => 'email',
+                'attributeValue' => 'notanemail',
+                'errorMessage' => [
+                    "email" => [
+                        'The email must be a valid email address.'
+                    ]
+                ]
+            ],
+            'email must be less than 255 characters' => [
+                'attribute' => 'email',
+                'attributeValue' => str_repeat('a', 256) . 'test@gmail.com',
+                'errorMessage' => [
+                    "email" => [
+                        "The email must not be greater than 255 characters."
+                    ]
+                ]
+            ],
         ];
     }
 }
