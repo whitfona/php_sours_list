@@ -51,4 +51,14 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Display the edit profile view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit()
+    {
+        return view('auth.edit-profile');
+    }
 }
