@@ -18,7 +18,7 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
 Route::get('/users/{user}/edit', [RegisteredUserController::class, 'edit'])
-                ->middleware('guest')
+                ->middleware('auth')
                 ->name('users.edit');
 
 Route::patch('/users/{user}', [RegisteredUserController::class, 'update'])
