@@ -8,9 +8,10 @@
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data"
+    <form method="POST" action="{{ route('users.update', auth()->id()) }}" enctype="multipart/form-data"
         class="max-w-xl mx-auto sm:px-6 lg:px-8 pt-24"> <!--TODO: Update action route-->
     @csrf
+        @method('PATCH')
 
     <!-- Name -->
         <div>
