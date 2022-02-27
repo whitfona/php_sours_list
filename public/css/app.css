@@ -1007,6 +1007,10 @@ select {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1042,6 +1046,12 @@ select {
 }
 .pt-24 {
   padding-top: 6rem;
+}
+.pt-16 {
+  padding-top: 4rem;
+}
+.pb-32 {
+  padding-bottom: 8rem;
 }
 .text-center {
   text-align: center;

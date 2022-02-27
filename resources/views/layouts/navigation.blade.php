@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('sours.index') }}">
+                    <a href="{{ route('sours.all') }}">
                         <x-application-logo :width="50" class="block h-10 w-auto fill-current text-gray-600"/>
                     </a>
                 </div>
@@ -95,6 +95,9 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                <x-responsive-nav-link :href="route('users.edit', auth()->id())">
+                    {{ __('Profile') }}
+                </x-responsive-nav-link>
             </div>
         </div>
     </div>
