@@ -5,13 +5,14 @@
         </h2>
     </x-slot>
 
-    <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
     <form method="POST" action="{{ route('users.update', auth()->id()) }}" enctype="multipart/form-data"
-        class="max-w-xl mx-auto sm:px-6 lg:px-8 pt-24"> <!--TODO: Update action route-->
+        class="max-w-xl mx-auto sm:px-6 lg:px-8 pt-24">
     @csrf
         @method('PATCH')
+
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
     <!-- Name -->
         <div>
@@ -31,10 +32,15 @@
         <div class="mt-4">
             <x-inputs.label for="profileImage" :value="__('Profile Image')" />
 
-            <x-inputs.input id="profileImage" class="block mt-1 w-full rounded-none"
-                            type="file"
-                            name="profileImage"
-            />
+            <img class="md:w-80"
+                 @if($user->profileImage)
+                 src="{{ asset('storage/users/' . $user->profileImage) }}"
+                 @else
+                 src=""
+                @endif
+            >
+
+            <x-inputs.input id="profileImage" class="block mt-1 w-full rounded-none" type="file" name="profileImage"/>
         </div>
 
 

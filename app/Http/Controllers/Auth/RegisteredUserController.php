@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
+use Intervention\Image\Facades\Image;
 
 class RegisteredUserController extends Controller
 {
@@ -70,6 +71,11 @@ class RegisteredUserController extends Controller
             'email' => ['sometimes', 'required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
             'profileImage' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
         ]);
+
+        if (request()->has('profileImage')) {
+            $validated['profileImage'] = time() . '.' . 'jpg';
+            Image::make(request()->file('profileImage'))->save(public_path('/storage/users/') . $validated['profileImage']);
+        }
 
         $user->update($validated);
 
