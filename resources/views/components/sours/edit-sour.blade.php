@@ -4,7 +4,7 @@
     <h2 class="text-white text-center text-xl uppercase font-bold">Edit Sour</h2>
 <!-- Name -->
     <div class="mt-4">
-        <x-inputs.label for="name" :value="__('Name')" />
+        <x-inputs.label for="name" :value="__('Name*')" />
 
         <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $sour->name)" required autofocus />
 
@@ -13,7 +13,7 @@
 
     <!-- Company -->
     <div class="mt-4">
-        <x-inputs.label for="company" :value="__('Company')" />
+        <x-inputs.label for="company" :value="__('Company*')" />
 
         <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company', $sour->company)" required />
 
@@ -23,7 +23,7 @@
     <!-- Rating & Percent -->
     <div class="mt-4 flex gap-4">
         <div>
-            <x-inputs.label for="rating" :value="__('Rating (as decimal number)')" />
+            <x-inputs.label for="rating" :value="__('Rating* (as decimal number)')" />
 
             <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating', $sour->rating)" />
 
