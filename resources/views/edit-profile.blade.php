@@ -7,7 +7,7 @@
 
 
     <form method="POST" action="{{ route('users.update', auth()->id()) }}" enctype="multipart/form-data"
-        class="max-w-xl mx-auto sm:px-6 lg:px-8 pt-24">
+        class="max-w-xl mx-auto sm:px-6 lg:px-8 py-16">
     @csrf
         @method('PATCH')
 
