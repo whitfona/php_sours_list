@@ -31,11 +31,11 @@
                                 <div class="pt-6 md:pt-0 w-full">
                                     <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
                                         <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
-                                        <x-h2-output subheading="Name" value="{{ $sour->name }}" />
+                                        <x-h2-output subheading="Name" value="{!! $sour->name !!}" />
                                     </div>
                                     <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
-                                        <x-h3-output subheading="Company" value="{{ $sour->company }}" />
+                                        <x-h3-output subheading="Company" value="{!! $sour->company !!}" />
                                         <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                             @if($sour->hasLactose == 1)
                                                 Yes
