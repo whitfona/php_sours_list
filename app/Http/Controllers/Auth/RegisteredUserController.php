@@ -58,9 +58,9 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit()
+    public function edit(User $user)
     {
-        return view('auth.edit-profile');
+        return view('edit-profile', compact('user'));
     }
 
     public function update(User $user)
