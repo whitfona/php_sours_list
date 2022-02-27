@@ -40,7 +40,11 @@
                                     </h3>
                                 </div>
                                 <p class="mb-3"><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
-                                <p><span class="text-md font-semibold tracking-wide uppercase">Added By:</span> {{ $sour->user->name }} | <time>{{ $sour->created_at->toDateString() }}</time>
+                                <p><span class="text-md font-semibold tracking-wide uppercase">Added By:</span>
+                                     @if($sour->user->profileImage)
+                                    <img class="w-8 h-8 rounded-full inline" src="{{ asset('storage/users/' . $sour->user->profileImage) }}">
+                                    @endif
+                                    {{ $sour->user->name }} | <time>{{ $sour->created_at->toDateString() }}</time>
                                 </p>
                             </div>
                         </div>

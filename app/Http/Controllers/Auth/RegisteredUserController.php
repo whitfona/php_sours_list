@@ -9,7 +9,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
+use Intervention\Image\Facades\Image;
 
 class RegisteredUserController extends Controller
 {
@@ -50,5 +52,36 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    /**
+     * Display the edit profile view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(User $user)
+    {
+        return view('edit-profile', compact('user'));
+    }
+
+    public function update(User $user)
+    {
+        $validated = \request()->validate([
+            'name' => ['sometimes', 'required', 'string', 'max:255'],
+            'email' => ['sometimes', 'required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
+            'profileImage' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
+        ]);
+
+        if (request()->has('profileImage')) {
+            $validated['profileImage'] = time() . '.' . 'jpg';
+            Image::make(request()->file('profileImage'))->save(public_path('/storage/users/') . $validated['profileImage']);
+        }
+
+        $user->update($validated);
+
+        return redirect(route('users.edit', $user->id))->with([
+            'type' => 'success',
+            'message' => 'Your profile was successfully updated!'
+        ]);
     }
 }
