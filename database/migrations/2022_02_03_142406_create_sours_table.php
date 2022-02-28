@@ -16,6 +16,7 @@ class CreateSoursTable extends Migration
         Schema::create('sours', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id')->nullable();
             $table->text('company');
             $table->text('name');
             $table->float('percent')->nullable();
