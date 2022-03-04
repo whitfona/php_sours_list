@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Sour;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
@@ -19,7 +20,7 @@ class SourController extends Controller
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
-            'category' => ['sometimes', 'numeric', 'gte:0', 'nullable']
+            'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
@@ -29,7 +30,7 @@ class SourController extends Controller
             $validated['image'] = time() . '.' . 'jpg';
             Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
         }
-
+//        dd($validated);
         auth()->user()->sours()->create($validated);
 
         return redirect(route('sours.index'))->with([
@@ -42,6 +43,7 @@ class SourController extends Controller
     {
         return view('my-sours', [
             'sours' => auth()->user()->sours()->filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+            'categories' => Category::all()
         ]);
     }
 

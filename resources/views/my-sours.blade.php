@@ -11,7 +11,7 @@
     </x-slot>
 
     <x-modal-add buttonText="Add Sour">
-        <x-sours.add-sour />
+        <x-sours.add-sour :categories="$categories" />
     </x-modal-add>
 
     <div class="py-6">
