@@ -27,7 +27,7 @@
                                 <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <x-h2-output subheading="Name" value="{!! $sour->name !!}" />
                                     <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
-                                    <x-h2-output subheading="Category" value="{{ $sour->category->name }}" />
+                                    <x-h2-output subheading="Category" value="{{ $sour->category->name ?? '' }}" />
                                 </div>
                                 <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
