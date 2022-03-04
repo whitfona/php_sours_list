@@ -30,7 +30,7 @@ class SourController extends Controller
             $validated['image'] = time() . '.' . 'jpg';
             Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
         }
-//        dd($validated);
+
         auth()->user()->sours()->create($validated);
 
         return redirect(route('sours.index'))->with([
@@ -71,7 +71,8 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
-            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
+            'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );

@@ -222,6 +222,25 @@ class EditSourTest extends TestCase
                     ]
                 ],
             ],
+            'category_id must be a number' => [
+                'attribute' => 'category_id',
+                'attributeValue' => 'hello',
+                'errorMessage' => [
+                    'category_id' => [
+                        "The category id must be a number.",
+                        "The category id must be greater than or equal to 0."
+                    ]
+                ],
+            ],
+            'category_id must be greater than zero' => [
+                'attribute' => 'category_id',
+                'attributeValue' => -4,
+                'errorMessage' => [
+                    'category_id' => [
+                        "The category id must be greater than or equal to 0."
+                    ]
+                ],
+            ],
         ];
     }
 }
