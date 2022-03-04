@@ -26,8 +26,9 @@ class CategoryTest extends TestCase
 
     public function test_category_belongs_to_a_sour()
     {
-        $category = Category::factory()->create();
+        $this->withoutExceptionHandling();
+        $sour = Sour::factory()->create();
 
-        $this->assertInstanceOf( Sour::class, $category->sour);
+        $this->assertInstanceOf( Category::class, $sour->category);
     }
 }

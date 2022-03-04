@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,9 @@ class SourFactory extends Factory
         return [
             'user_id' => function() {
                 return User::factory()->create()->id;
+            },
+            'category_id' => function() {
+                return Category::factory()->create()->id;
             },
             'company' => $this->faker->name,
             'name' => $this->faker->name,
