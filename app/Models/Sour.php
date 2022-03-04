@@ -22,6 +22,14 @@ class Sour extends Model
                 ->orWhere('company', 'like', '%' . $search . '%')
                 ->orWhere('comments', 'like', '%' . $search . '%');
         });
+
+
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            $query->whereHas('category', function ($query, $category) {
+                $query->where('category_id', $category);
+            });
+        });
+
     }
 
     public function user()
