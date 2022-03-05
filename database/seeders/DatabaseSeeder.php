@@ -17,14 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->create(['name' => 'Sour']);
-        Category::factory()->create(['name' => 'Ale']);
-        Category::factory()->create(['name' => 'Cider']);
-        Category::factory()->create(['name' => 'Lager']);
-        Category::factory()->create(['name' => 'Porter']);
-        Category::factory()->create(['name' => 'Radler']);
-        Category::factory()->create(['name' => 'Stout']);
-        Category::factory()->create(['name' => 'Wheat']);
+        Category::factory(8)->create();
 
         $user = User::factory()->create([
             'name' => 'Nick',
@@ -36,13 +29,14 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id,
             'category_id' => 1
         ]);
+
         Sour::factory(1)->create([
             'user_id' => $user->id,
             'category_id' => 2
             ]);
+
         Sour::factory(2)->create(['category_id' => 1]);
         Sour::factory(5)->create(['category_id' => 5]);
         Sour::factory(3)->create(['category_id' => 6]);
-
     }
 }
