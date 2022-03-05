@@ -16,7 +16,8 @@
         </form>
 
         <!-- Category Filter -->
-        <x-category-dropdown :categoryUrl="$categoryUrl" />
+        <x-filter.category-dropdown :categoryUrl="$categoryUrl" />
+
     </x-slot>
 
     <x-modal-add buttonText="Add Sour">
