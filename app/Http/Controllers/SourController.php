@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Sour;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;

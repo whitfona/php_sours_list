@@ -80,8 +80,7 @@ class RegisteredUserController extends Controller
         $user->update($validated);
 
         return redirect(route('users.edit', $user->id))->with([
-            'type' => 'success',
-            'message' => 'Your profile was successfully updated!'
+            'success' => 'Your profile was successfully updated!'
         ]);
     }
 }
