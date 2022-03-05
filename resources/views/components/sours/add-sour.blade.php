@@ -51,7 +51,7 @@
     <div class="mt-4">
         <x-inputs.label for="category" :value="__('Category')" class="inline" />
 
-        <x-inputs.select :categories="$categories" :selectedCategory="0" />
+        <x-inputs.select :selectedCategory="0" />
 
         <x-inputs.error name="category" />
     </div>
