@@ -54,14 +54,6 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
 
-    public function show(User $user)
-    {
-        return view('sours-by-user', [
-            'sours' => $user->sours,
-            'user' => $user
-        ]);
-    }
-
     /**
      * Display the edit profile view.
      *

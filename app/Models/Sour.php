@@ -28,6 +28,12 @@ class Sour extends Model
                 $query->where('name', $category);
             });
         });
+
+        $query->when($filters['connoisseur'] ?? false, function ($query, $user) {
+            $query->whereHas('user', function ($query) use ($user) {
+                $query->where('name', $user);
+            });
+        });
     }
 
     public function user()
