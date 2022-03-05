@@ -58,7 +58,7 @@
                                      @if($sour->user->profileImage)
                                     <img class="w-8 h-8 rounded-full inline" src="{{ asset('storage/users/' . $sour->user->profileImage) }}">
                                     @endif
-                                    <a href="/sours?connoisseur={{ $sour->user->name }}">{{ $sour->user->name }}</a> | <time>{{ $sour->created_at->toDateString() }}</time>
+                                    <a class="hover:underline" href="/sours?connoisseur={{ $sour->user->name }}">{{ $sour->user->name }}</a> | <time>{{ $sour->created_at->toDateString() }}</time>
                                 </p>
                             </div>
                         </div>
