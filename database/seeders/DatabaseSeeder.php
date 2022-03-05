@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->create(['name' => 'Sour Beer']);
+        Category::factory()->create(['name' => 'Sour']);
         Category::factory()->create(['name' => 'Ale']);
         Category::factory()->create(['name' => 'Cider']);
         Category::factory()->create(['name' => 'Lager']);
         Category::factory()->create(['name' => 'Porter']);
         Category::factory()->create(['name' => 'Radler']);
         Category::factory()->create(['name' => 'Stout']);
-        Category::factory()->create(['name' => 'Wheat Beer']);
+        Category::factory()->create(['name' => 'Wheat']);
 
         $user = User::factory()->create([
             'name' => 'Nick',

@@ -9,6 +9,9 @@
             @if(request('category'))
                 <input type="hidden" name="category" value="{{ request('category') }}">
             @endif
+                @if(request('connoisseur'))
+                <input type="hidden" name="connoisseur" value="{{ request('connoisseur') }}">
+            @endif
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
 

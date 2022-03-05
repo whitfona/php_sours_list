@@ -10,7 +10,7 @@
 
     @foreach ($categories as $category)
         <x-dropdown-item
-            href="/sours?category={{ $category->name }}"
+            href="/sours?category={{ $category->name }}&{{ http_build_query(request()->except('category')) }}"
             :active='request()->is("categories/{{ $category->id }}")'
         >{{ $category->name }}
         </x-dropdown-item>

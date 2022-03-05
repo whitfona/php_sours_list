@@ -18,12 +18,21 @@ class Sour extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            $query->where('name', 'like', '%' . $search . '%')
-                ->orWhere('company', 'like', '%' . $search . '%')
-                ->orWhere('comments', 'like', '%' . $search . '%')
-                ->orWhereHas('user', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%');
-                });
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('company', 'like', '%' . $search . '%')
+                    ->orWhere('comments', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
+            });
+
+//            $query->where('name', 'like', '%' . $search . '%')
+//                ->orWhere('company', 'like', '%' . $search . '%')
+//                ->orWhere('comments', 'like', '%' . $search . '%')
+//                ->orWhereHas('user', function ($query) use ($search) {
+//                    $query->where('name', 'like', '%' . $search . '%');
+//                });
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {
