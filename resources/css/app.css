@@ -12,3 +12,7 @@
     opacity: 0.75;
     z-index: 1;
 }
+
+.md\:max-w-xxs {
+    max-width: 12rem;
+}
