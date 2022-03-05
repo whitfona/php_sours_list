@@ -1,9 +1,9 @@
 <x-dropdown>
     <x-slot name="trigger">
-        <button class="rounded-md bg-white text-left text-gray-500 px-3 py-2 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-2 w-full md:w-1/3" >
+        <button class="bg-white px-3 py-2 text-gray-500 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-2 flex gap-2" >
             {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Filter by Category' }}
 
-{{--            <x-icon name="down-arrow" />--}}
+            <x-dropdown-arrow />
         </button>
     </x-slot>
     <x-dropdown-item href="/sours" :active="request()->routeIs('home')">All</x-dropdown-item>
