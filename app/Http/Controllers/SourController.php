@@ -34,8 +34,7 @@ class SourController extends Controller
         auth()->user()->sours()->create($validated);
 
         return redirect(route('sours.index'))->with([
-            'type' => 'success',
-            'message' => 'Your new sour was successfully added!'
+            'success' => 'Your new sour was successfully added!'
         ]);
     }
 
@@ -85,8 +84,7 @@ class SourController extends Controller
         $sour->update($validated);
 
         return redirect(route('sours.index'))->with([
-            'type' => 'success',
-            'message' => 'The sour was successfully deleted!'
+            'success' => 'The sour was successfully updated!'
         ]);
     }
 
@@ -95,8 +93,7 @@ class SourController extends Controller
         $sour->delete();
 
         return redirect(route('sours.index'))->with([
-            'type' => 'success',
-            'message' => 'The sour was successfully deleted!'
+            'success' => 'The sour was successfully deleted!'
         ]);
     }
 }
