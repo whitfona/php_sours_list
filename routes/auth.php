@@ -21,6 +21,8 @@ Route::get('/users/{user}/edit', [RegisteredUserController::class, 'edit'])
                 ->middleware('auth')
                 ->name('users.edit');
 
+Route::get('/sours-added-by/{user:name}', [RegisteredUserController::class, 'show']);
+
 Route::patch('/users/{user}', [RegisteredUserController::class, 'update'])
                 ->middleware('auth')
                 ->name('users.update');

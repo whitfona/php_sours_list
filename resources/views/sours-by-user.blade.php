@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('All Sours') }}
+            {{ __('Sours Added by') }} {{ $user->name }}
         </h2>
 
         <!-- Search Bar -->
@@ -49,14 +49,14 @@
                                      @if($sour->user->profileImage)
                                     <img class="w-8 h-8 rounded-full inline" src="{{ asset('storage/users/' . $sour->user->profileImage) }}">
                                     @endif
-                                    <a href="/sours-added-by/{{ $sour->user->name }}">{{ $sour->user->name }}</a> | <time>{{ $sour->created_at->toDateString() }}</time>
+                                    <a href="/user/{{ $sour->user->name }}">{{ $sour->user->name }}</a> | <time>{{ $sour->created_at->toDateString() }}</time>
                                 </p>
                             </div>
                         </div>
                     @empty
                         <h2>No sours to display!</h2>
                     @endforelse
-                    {{ $sours->links() }}
+{{--                    {{ $sours->links() }}--}}
                 </div>
             </div>
         </div>
