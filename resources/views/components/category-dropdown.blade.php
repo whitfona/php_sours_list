@@ -1,7 +1,7 @@
 <x-dropdown>
     <x-slot name="trigger">
-        <button class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex" >
-            {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
+        <button class="rounded-md bg-white text-left text-gray-500 px-3 py-2 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-2 w-full md:w-1/3" >
+            {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Filter by Category' }}
 
 {{--            <x-icon name="down-arrow" />--}}
         </button>
