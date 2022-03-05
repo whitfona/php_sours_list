@@ -50,7 +50,6 @@ class SourController extends Controller
     {
         return view('all-sours', [
             'sours' => Sour::filter(request(['search', 'category']))->orderBy('rating', 'DESC')->paginate(10),
-            'categories' => Category::all(),
         ]);
     }
 

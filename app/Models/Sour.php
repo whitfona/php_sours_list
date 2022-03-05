@@ -23,11 +23,11 @@ class Sour extends Model
                 ->orWhere('comments', 'like', '%' . $search . '%');
         });
 
-//        $query->when($filters['category'] ?? false, function ($query, $category) {
-//            $query->whereHas('category', function ($query, $category) {
-//                $query->where('category_id', $category);
-//            });
-//        });
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            $query->whereHas('category', function ($query) use ($category) {
+                $query->where('name', $category);
+            });
+        });
     }
 
     public function user()
