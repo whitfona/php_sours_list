@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Sour;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
@@ -18,7 +19,8 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'nullable'],
-            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
+            'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );
@@ -40,14 +42,14 @@ class SourController extends Controller
     public function index()
     {
         return view('my-sours', [
-            'sours' => auth()->user()->sours()->filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+            'sours' => auth()->user()->sours()->filter(request(['search', 'category']))->orderBy('rating', 'DESC')->paginate(10),
         ]);
     }
 
     public function all()
     {
         return view('all-sours', [
-            'sours' => Sour::filter(request(['search']))->orderBy('rating', 'DESC')->paginate(10),
+            'sours' => Sour::filter(request(['search', 'category', 'connoisseur']))->orderBy('rating', 'DESC')->paginate(10),
         ]);
     }
 
@@ -68,7 +70,8 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
-            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
+            'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
         );

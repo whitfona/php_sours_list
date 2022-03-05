@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sours Tracker</title>
+        <title>SHOUTS</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@
         <div class="">
             @if (Route::has('login'))
                 <div class="hidden max-w-lg mx-auto text-right px-6 py-4 sm:block">
-{{--                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">--}}
                     @auth
                         <a href="{{ url('/sours') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Dashboard</a>
                     @else
@@ -40,7 +39,7 @@
 
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                     <div class="px-6 py-4">
-                        <p>Have you ever been drinking and thought, <em>"Well how do you do, this is a great sour! I sure would like to wet my palate with this again."</em> But then proceeded to sample a few many sours that they all became a blur? Having experienced a similar situation, <strong>NAME OF THE APP</strong> is here so that never happens again. Add, rate and share your favourite sours, so you never again have to suffer through a sour you already know you hate.</p>
+                        <p>Have you ever been drinking and thought, <em>"Well how do you do, this is a great sour! I sure would like to wet my palate with this again."</em> But then proceeded to sample a few many sours that they all became a blur? Having experienced a similar situation, <strong>SHOUTS</strong> is here so that never happens again. Add, rate and share your favourite sours, so you never again have to suffer through a sour you already know you hate.</p>
                     </div>
                 </div>
 

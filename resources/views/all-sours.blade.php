@@ -1,3 +1,6 @@
+@php
+    $categoryUrl = "/";
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
@@ -6,8 +9,18 @@
 
         <!-- Search Bar -->
         <form action="{{ route('sours.all') }}" method="GET">
+            @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
+                @if(request('connoisseur'))
+                <input type="hidden" name="connoisseur" value="{{ request('connoisseur') }}">
+            @endif
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
+
+        <!-- Category Filter -->
+        <x-filter.category-dropdown :categoryUrl="$categoryUrl" />
+
     </x-slot>
 
     <div class="py-6">
@@ -16,7 +29,7 @@
                 <div class="p-6">
                     @forelse($sours as $sour)
                         <div class="md:flex gap-4 mb-8">
-                            <img class="md:max-w-xs"
+                            <img class="md:max-w-xxs"
                                  @if($sour->image)
                                     src="{{ asset('storage/sours/' . $sour->image) }}"
                                  @else
@@ -24,9 +37,10 @@
                                  @endif
                             >
                             <div class="w-full">
-                                <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
-                                    <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
+                                <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <x-h2-output subheading="Name" value="{!! $sour->name !!}" />
+                                    <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
+                                    <x-h2-output subheading="Category" value="{{ $sour->category->name ?? '' }}" />
                                 </div>
                                 <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
@@ -44,7 +58,7 @@
                                      @if($sour->user->profileImage)
                                     <img class="w-8 h-8 rounded-full inline" src="{{ asset('storage/users/' . $sour->user->profileImage) }}">
                                     @endif
-                                    {{ $sour->user->name }} | <time>{{ $sour->created_at->toDateString() }}</time>
+                                    <a class="hover:underline" href="/sours?connoisseur={{ $sour->user->name }}">{{ $sour->user->name }}</a> | <time>{{ $sour->created_at->toDateString() }}</time>
                                 </p>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,12 +19,15 @@ class SourFactory extends Factory
             'user_id' => function() {
                 return User::factory()->create()->id;
             },
-            'company' => $this->faker->name,
-            'name' => $this->faker->name,
+            'category_id' => function() {
+                return Category::factory()->create()->id;
+            },
+            'company' => $this->faker->name(),
+            'name' => $this->faker->name(),
             'percent' => $this->faker->randomFloat(1, 0, 10),
-            'comments' => $this->faker->paragraph,
+            'comments' => $this->faker->paragraph(),
             'rating' => $this->faker->randomFloat(1, 0, 10),
-            'hasLactose' => $this->faker->boolean,
+            'hasLactose' => $this->faker->boolean(),
             'image' => null,
         ];
     }

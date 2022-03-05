@@ -41,12 +41,14 @@ class AddSoursTest extends TestCase
             'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
             'rating' => 9,
             'hasLactose' => true,
-            'image' => UploadedFile::fake()->image('test-image.png')
+            'image' => UploadedFile::fake()->image('test-image.png'),
+            'category' => 1
         ];
 
         $this->postJson(route('sours.store'), $attributes)
             ->assertRedirect(route('sours.index'));
 
+        $this->assertDatabaseCount('sours', 1);
 //        $this->assertDatabaseHas('sours', $attributes);
     }
 
@@ -210,6 +212,23 @@ class AddSoursTest extends TestCase
                 'errorMessage' => [
                     'image' => [
                         'The image must not be greater than 3000 kilobytes.'
+                    ]
+                ],
+            ],
+            'category must be a number' => [
+                'invalidAttribute' => $this->setInvalidAttribute('category', 'hello'),
+                'errorMessage' => [
+                    'category' => [
+                        'The category must be a number.',
+                        'The category must be greater than or equal to 0.'
+                    ]
+                ],
+            ],
+            'category must be greater than or equal to zero' => [
+                'invalidAttribute' => $this->setInvalidAttribute('category', -3),
+                'errorMessage' => [
+                    'category' => [
+                        'The category must be greater than or equal to 0.'
                     ]
                 ],
             ],

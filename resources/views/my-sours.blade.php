@@ -1,3 +1,6 @@
+@php
+    $categoryUrl = "/my-sours";
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
@@ -6,8 +9,15 @@
 
         <!-- Search Bar -->
         <form action="{{ route('sours.index') }}" method="GET">
+            @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
+
+        <!-- Category Filter -->
+        <x-filter.category-dropdown :categoryUrl="$categoryUrl" />
+
     </x-slot>
 
     <x-modal-add buttonText="Add Sour">
@@ -21,7 +31,7 @@
                     @forelse($sours as $sour)
                         <div class="mb-8">
                             <div class="md:flex gap-4">
-                                <img class="md:w-80"
+                                <img class="md:max-w-xxs"
                                      @if($sour->image)
                                         src="{{ asset('storage/sours/' . $sour->image) }}"
                                      @else
@@ -29,9 +39,10 @@
                                      @endif
                                 >
                                 <div class="pt-6 md:pt-0 w-full">
-                                    <div class="md:flex flex-wrap gap-x-2 gap-y-0 mb-3">
-                                        <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
+                                    <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <x-h2-output subheading="Name" value="{!! $sour->name !!}" />
+                                        <x-h2-output subheading="Rating" value="{{ $sour->rating }}" />
+                                        <x-h2-output subheading="Category" value="{{ $sour->category->name ?? '' }}" />
                                     </div>
                                     <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />

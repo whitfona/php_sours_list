@@ -37,6 +37,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('users.edit', auth()->id())">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -47,9 +50,6 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
-                        <x-dropdown-link :href="route('users.edit', auth()->id())">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -85,6 +85,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('users.edit', auth()->id())">
+                    {{ __('Profile') }}
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -95,9 +98,6 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
-                <x-responsive-nav-link :href="route('users.edit', auth()->id())">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
             </div>
         </div>
     </div>

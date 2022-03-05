@@ -47,6 +47,15 @@
         <x-inputs.error name="hasLactose" />
     </div>
 
+    <!-- Category -->
+    <div class="mt-4">
+        <x-inputs.label for="category" :value="__('Category')" class="inline" />
+
+        <x-inputs.select :selectedCategory="0" />
+
+        <x-inputs.error name="category" />
+    </div>
+
     <!-- Comments -->
     <div class="mt-4">
         <x-inputs.label for="comments" :value="__('Comments')" />
