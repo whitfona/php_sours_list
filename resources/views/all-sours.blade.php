@@ -29,7 +29,7 @@
                 <div class="p-6">
                     @forelse($sours as $sour)
                         <div class="md:flex gap-4 mb-8">
-                            <img class="md:max-w-xs"
+                            <img class="md:max-w-xxs"
                                  @if($sour->image)
                                     src="{{ asset('storage/sours/' . $sour->image) }}"
                                  @else
