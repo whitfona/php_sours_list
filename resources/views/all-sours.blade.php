@@ -1,3 +1,6 @@
+@php
+    $categoryUrl = "/";
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
@@ -16,7 +19,7 @@
         </form>
 
         <!-- Category Filter -->
-        <x-category-dropdown />
+        <x-category-dropdown :categoryUrl="$categoryUrl" />
 
     </x-slot>
 

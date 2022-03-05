@@ -1,3 +1,6 @@
+@php
+    $categoryUrl = "/my-sours";
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
@@ -6,8 +9,14 @@
 
         <!-- Search Bar -->
         <form action="{{ route('sours.index') }}" method="GET">
+            @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
+
+        <!-- Category Filter -->
+        <x-category-dropdown :categoryUrl="$categoryUrl" />
     </x-slot>
 
     <x-modal-add buttonText="Add Sour">

@@ -6,11 +6,11 @@
             <x-dropdown-arrow />
         </button>
     </x-slot>
-    <x-dropdown-item href="/sours" :active="request()->routeIs('home')">All</x-dropdown-item>
+    <x-dropdown-item href="/sours{{ $categoryUrl }}" :active="request()->routeIs('home')">All</x-dropdown-item>
 
     @foreach ($categories as $category)
         <x-dropdown-item
-            href="/sours?category={{ $category->name }}&{{ http_build_query(request()->except('category')) }}"
+            href="/sours{{ $categoryUrl }}?category={{ $category->name }}&{{ http_build_query(request()->except('category')) }}"
             :active='request()->is("categories/{{ $category->id }}")'
         >{{ $category->name }}
         </x-dropdown-item>

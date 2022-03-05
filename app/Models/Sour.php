@@ -26,13 +26,6 @@ class Sour extends Model
                         $query->where('name', 'like', '%' . $search . '%');
                     });
             });
-
-//            $query->where('name', 'like', '%' . $search . '%')
-//                ->orWhere('company', 'like', '%' . $search . '%')
-//                ->orWhere('comments', 'like', '%' . $search . '%')
-//                ->orWhereHas('user', function ($query) use ($search) {
-//                    $query->where('name', 'like', '%' . $search . '%');
-//                });
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {

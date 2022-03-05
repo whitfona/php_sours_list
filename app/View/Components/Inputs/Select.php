@@ -19,6 +19,7 @@ class Select extends Component
     {
         $this->selectedCategory = $selectedCategory;
     }
+
     /**
      * Get the view / contents that represent the component.
      *
