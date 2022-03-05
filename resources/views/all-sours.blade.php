@@ -6,6 +6,9 @@
 
         <!-- Search Bar -->
         <form action="{{ route('sours.all') }}" method="GET">
+            @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
             <x-inputs.input class="mt-2 w-full md:w-1/3" name="search" type="text" value="{{ request('search') }}" placeholder="Search..." />
         </form>
 
