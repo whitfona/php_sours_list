@@ -26,8 +26,8 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6">
+            <div class="bg-pink-200 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="m-6 p-4 bg-white">
                     @forelse($sours as $sour)
                         <div class="mb-8">
                             <div class="md:flex gap-4">
