@@ -6,7 +6,7 @@
         @csrf
         @method('DELETE')
         <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline">
-            <p class="text-md text-white font-extrabold uppercase">Delete Sour</p>
+            <p class="text-md text-white font-extrabold uppercase">Delete</p>
         </button>
     </form>
 
@@ -36,7 +36,7 @@
         @csrf
         @method('DELETE')
         <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline">
-            <p class="text-md text-white font-extrabold uppercase">Delete Sour</p>
+            <p class="text-md text-white font-extrabold uppercase">Delete</p>
         </button>
     </form>
 

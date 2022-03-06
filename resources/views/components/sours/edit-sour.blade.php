@@ -1,66 +1,71 @@
 <form method="POST" action="{{ route('sours.update', $sour->id) }}" class="p-2" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
-    <h2 class="text-white text-center text-xl uppercase font-bold">Edit Sour</h2>
-<!-- Name -->
-    <div class="mt-4">
-        <x-inputs.label for="name" :value="__('Name*')" />
+    <h2 class="text-white text-center text-2xl uppercase font-bold">Edit Bevvie</h2>
 
-        <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $sour->name)" required autofocus />
+    <div class="md:flex md:gap-4">
+        <!-- Name -->
+        <div class="mt-4 md:grow">
+            <x-inputs.label for="name" :value="__('Name*')" />
 
-        <x-inputs.error name="name" />
-    </div>
+            <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $sour->name)" required autofocus />
 
-    <!-- Company -->
-    <div class="mt-4">
-        <x-inputs.label for="company" :value="__('Company*')" />
-
-        <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company', $sour->company)" required />
-
-        <x-inputs.error name="company" />
-    </div>
-
-    <!-- Rating & Percent -->
-    <div class="mt-4 flex gap-4">
-        <div>
-            <x-inputs.label for="rating" :value="__('Rating* (as decimal number)')" />
-
-            <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating', $sour->rating)" />
-
-            <x-inputs.error name="rating" />
+            <x-inputs.error name="name" />
         </div>
 
-        <div>
-            <x-inputs.label for="percent" :value="__('Percent (as decimal number)')" />
+        <!-- Company -->
+        <div class="mt-4 md:grow">
+            <x-inputs.label for="company" :value="__('Brewery*')" />
 
-            <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent', $sour->percent)" />
+            <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company', $sour->company)" required />
 
-            <x-inputs.error name="percent" />
+            <x-inputs.error name="company" />
         </div>
     </div>
 
-    <!-- HasLactose -->
-    <div class="mt-4">
-        <x-inputs.label for="hasLactose" :value="__('Has Lactose?')" class="inline" />
+    <div class="md:flex">
+        <!-- Rating & Percent -->
+        <div class="mt-4 flex gap-4">
+            <div>
+                <x-inputs.label for="rating" :value="__('Rating* (as decimal number)')" />
 
-        @if($sour->hasLactose == true)
-        <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" checked />
-        @else
-        <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
-        @endif
+                <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating', $sour->rating)" />
 
-        <x-inputs.error name="hasLactose" />
+                <x-inputs.error name="rating" />
+            </div>
+
+            <div>
+                <x-inputs.label for="percent" :value="__('Percent (as decimal number)')" />
+
+                <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent', $sour->percent)" />
+
+                <x-inputs.error name="percent" />
+            </div>
+        </div>
+
+        <div class="mt-4 flex gap-4 md:mt-0 md:ml-4">
+            <!-- Category & HasLactose -->
+            <div class="mt-4">
+                <x-inputs.label for="category" :value="__('Category')" class="mb-1" />
+
+                <x-inputs.select :selectedCategory="$sour->category->id ?? ''" />
+
+                <x-inputs.error name="category" />
+            </div>
+
+            <div class="mt-4">
+                <x-inputs.label for="hasLactose" :value="__('Has Lactose?')" class="mb-1" />
+
+                @if($sour->hasLactose == true)
+                <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" checked />
+                @else
+                <x-inputs.input id="hasLactose" value="1" class="w-6 h-6 md:w-10 md:h-10" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
+                @endif
+
+                <x-inputs.error name="hasLactose" />
+            </div>
+        </div>
     </div>
-
-    <!-- Category -->
-    <div class="mt-4">
-        <x-inputs.label for="category" :value="__('Category')" class="inline" />
-
-        <x-inputs.select :selectedCategory="$sour->category->id ?? ''" />
-
-        <x-inputs.error name="category" />
-    </div>
-
     <!-- Comments -->
     <div class="mt-4">
         <x-inputs.label for="comments" :value="__('Comments')" />
@@ -81,6 +86,6 @@
 
 
     <x-inputs.button class="mt-6">
-        {{ __('Edit Sour') }}
+        {{ __('Edit') }}
     </x-inputs.button>
 </form>

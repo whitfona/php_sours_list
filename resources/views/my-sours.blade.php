@@ -4,7 +4,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('My Sours') }}
+            {{ __('My Bevvies') }}
         </h2>
 
         <!-- Search Bar -->
@@ -20,7 +20,7 @@
 
     </x-slot>
 
-    <x-modal-add buttonText="Add Sour">
+    <x-modal-add buttonText="Add">
         <x-sours.add-sour />
     </x-modal-add>
 
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                         <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
-                                        <x-h3-output subheading="Company" value="{!! $sour->company !!}" />
+                                        <x-h3-output subheading="Brewery" value="{!! $sour->company !!}" />
                                         <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                             @if($sour->hasLactose == 1)
                                                 Yes
@@ -58,7 +58,7 @@
                                     <p><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
                                 </div>
                             </div>
-                            <x-modal-edit buttonText="Edit Sour" :sour="$sour" >
+                            <x-modal-edit buttonText="Edit" :sour="$sour" >
                                 <x-sours.edit-sour :sour="$sour" />
                             </x-modal-edit>
                         </div>
