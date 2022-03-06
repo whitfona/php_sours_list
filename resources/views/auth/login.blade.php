@@ -69,14 +69,5 @@
                 </div>
             </form>
         </div>
-        <div class="flex justify-center mt-10 sm:items-center sm:justify-center">
-            <div class="text-center text-sm text-white sm:text-left">
-                <div class="flex items-center text-white">
-                    <a href="https://whitforddesign.ca" class="text-white no-underline hover:underline">
-                        Whitford Design | 2022
-                    </a>
-                </div>
-            </div>
-        </div>
     </x-auth-card>
 </x-guest-layout>
