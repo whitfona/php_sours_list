@@ -215,20 +215,20 @@ class AddSoursTest extends TestCase
                     ]
                 ],
             ],
-            'category must be a number' => [
-                'invalidAttribute' => $this->setInvalidAttribute('category', 'hello'),
+            'category id must be a number' => [
+                'invalidAttribute' => $this->setInvalidAttribute('category_id', 'hello'),
                 'errorMessage' => [
-                    'category' => [
-                        'The category must be a number.',
-                        'The category must be greater than or equal to 0.'
+                    'category_id' => [
+                        'The category id must be a number.',
+                        'The category id must be greater than or equal to 0.'
                     ]
                 ],
             ],
-            'category must be greater than or equal to zero' => [
-                'invalidAttribute' => $this->setInvalidAttribute('category', -3),
+            'category id must be greater than or equal to zero' => [
+                'invalidAttribute' => $this->setInvalidAttribute('category_id', -3),
                 'errorMessage' => [
-                    'category' => [
-                        'The category must be greater than or equal to 0.'
+                    'category_id' => [
+                        'The category id must be greater than or equal to 0.'
                     ]
                 ],
             ],

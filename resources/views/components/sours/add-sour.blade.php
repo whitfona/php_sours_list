@@ -1,59 +1,66 @@
 <form method="POST" action="{{ route('sours.store') }}" class="p-2" enctype="multipart/form-data">
-@csrf
-    <h2 class="text-white text-center text-xl uppercase font-bold">Add Sour</h2>
-<!-- Name -->
-    <div class="mt-4">
-        <x-inputs.label for="name" :value="__('Name*')" />
+    @csrf
 
-        <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+    <h2 class="text-white text-center text-2xl uppercase font-bold">Add Bevvie</h2>
 
-        <x-inputs.error name="name" />
-    </div>
+    <div class="md:flex md:gap-4">
+        <!-- Name -->
+        <div class="mt-4 md:grow">
+            <x-inputs.label for="name" :value="__('Name*')" />
 
-    <!-- Company -->
-    <div class="mt-4">
-        <x-inputs.label for="company" :value="__('Company*')" />
+            <x-inputs.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
 
-        <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company')" required />
-
-        <x-inputs.error name="company" />
-    </div>
-
-    <!-- Rating & Percent -->
-    <div class="mt-4 flex gap-4">
-        <div>
-            <x-inputs.label for="rating" :value="__('Rating* (as decimal number)')" />
-
-            <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating')" />
-
-            <x-inputs.error name="rating" />
+            <x-inputs.error name="name" />
         </div>
 
-        <div>
-            <x-inputs.label for="percent" :value="__('Percent (as decimal number)')" />
+        <!-- Company -->
+        <div class="mt-4 md:grow">
+            <x-inputs.label for="company" :value="__('Brewery*')" />
 
-            <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent')" />
+            <x-inputs.input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company')" required />
 
-            <x-inputs.error name="percent" />
+            <x-inputs.error name="company" />
         </div>
     </div>
 
-    <!-- HasLactose -->
-    <div class="mt-4">
-        <x-inputs.label for="hasLactose" :value="__('Has Lactose?')" class="inline" />
+    <div class="md:flex">
+        <!-- Rating & Percent -->
+        <div class="mt-4 flex gap-4">
+            <div>
+                <x-inputs.label for="rating" :value="__('Rating* (as decimal number)')" />
 
-        <x-inputs.input id="hasLactose" value="1" class="w-6 h-6" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
+                <x-inputs.input id="rating" class="block mt-1 w-full" type="text" name="rating" :value="old('rating')" />
 
-        <x-inputs.error name="hasLactose" />
-    </div>
+                <x-inputs.error name="rating" />
+            </div>
 
-    <!-- Category -->
-    <div class="mt-4">
-        <x-inputs.label for="category" :value="__('Category')" class="inline" />
+            <div>
+                <x-inputs.label for="percent" :value="__('Percent (as decimal number)')" />
 
-        <x-inputs.select :selectedCategory="0" />
+                <x-inputs.input id="percent" class="block mt-1 w-full" type="text" name="percent" :value="old('percent')" />
 
-        <x-inputs.error name="category" />
+                <x-inputs.error name="percent" />
+            </div>
+        </div>
+
+        <!-- Category & HasLactose -->
+        <div class="mt-4 flex gap-4 md:mt-0 md:ml-4">
+            <div class="mt-4">
+                <x-inputs.label for="category" :value="__('Category')" class="mb-1" />
+
+                <x-inputs.select :selectedCategory="0" />
+
+                <x-inputs.error name="category" />
+            </div>
+
+            <div class="mt-4">
+                <x-inputs.label for="hasLactose" :value="__('Has Lactose?')" class="mb-1" />
+
+                <x-inputs.input id="hasLactose" value="1" class="w-6 h-6 block md:w-10 md:h-10" type="checkbox" name="hasLactose" :value="old('hasLactose')" />
+
+                <x-inputs.error name="hasLactose" />
+            </div>
+        </div>
     </div>
 
     <!-- Comments -->
@@ -76,6 +83,6 @@
 
 
     <x-inputs.button class="mt-6">
-        {{ __('Add Sour') }}
+        {{ __('Add') }}
     </x-inputs.button>
 </form>

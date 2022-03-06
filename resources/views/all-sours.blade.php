@@ -4,7 +4,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('All Sours') }}
+            {{ __('All Bevvies') }}
         </h2>
 
         <!-- Search Bar -->
@@ -25,11 +25,11 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6">
+            <div class="bg-pink-200 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="m-6 p-6 bg-white">
                     @forelse($sours as $sour)
-                        <div class="md:flex gap-4 mb-8">
-                            <img class="md:max-w-xxs"
+                        <div class="md:flex gap-4 mb-10">
+                            <img class="md:max-w-xxs mb-3 md:mb-0"
                                  @if($sour->image)
                                     src="{{ asset('storage/sours/' . $sour->image) }}"
                                  @else
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="md:flex flex-wrap justify-between gap-x-2 gap-y-0 mb-3">
                                     <x-h3-output subheading="Percent" value="{{ $sour->percent }}%" />
-                                    <x-h3-output subheading="Company" value="{!! $sour->company !!}" />
+                                    <x-h3-output subheading="Brewery" value="{!! $sour->company !!}" />
                                     <h3 class="text-md"><span class="font-semibold tracking-wide uppercase">Has Lactose:</span>
                                         @if($sour->hasLactose == 1)
                                             Yes
