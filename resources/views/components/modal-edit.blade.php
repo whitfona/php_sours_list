@@ -22,6 +22,7 @@
         x-show="isModalOpen"
         x-on:click.away="isModalOpen = false"
         x-cloak
+        style="display: none"
     >
         {{ $slot }}
     </div>
