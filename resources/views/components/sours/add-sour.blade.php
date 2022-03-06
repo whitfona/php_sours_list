@@ -1,7 +1,9 @@
 <form method="POST" action="{{ route('sours.store') }}" class="p-2" enctype="multipart/form-data">
-@csrf
+    @csrf
+
     <h2 class="text-white text-center text-xl uppercase font-bold">Add Sour</h2>
-<!-- Name -->
+
+    <!-- Name -->
     <div class="mt-4">
         <x-inputs.label for="name" :value="__('Name*')" />
 
