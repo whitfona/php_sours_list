@@ -66,26 +66,6 @@ class EditSourTest extends TestCase
         $this->assertGuest();
     }
 
-    public function test_error_thrown_if_updated_name_is_not_unique()
-    {
-        $this->actingAs(User::factory()->create());
-        Sour::factory()->create(['name' => 'Not a unique name']);
-        $sourToUpdate = Sour::factory()->create();
-
-        $this->patchJson(route('sours.update', $sourToUpdate), [
-            'name' => 'Not a unique name'
-        ])->assertUnprocessable()
-            ->assertExactJson([
-                "errors" => [
-                    "name" => [
-                        "That sour has already been rated!"
-                    ]
-                ],
-                "message" => "The given data was invalid."
-            ]);
-    }
-
-
     /**
      * @dataProvider InvalidUpdateData
      */
@@ -238,10 +218,10 @@ class EditSourTest extends TestCase
             ],
             'image must be less than 3 MB' => [
                 'attribute' => 'image',
-                'attributeValue' => UploadedFile::fake()->create('test.png', 3001),
+                'attributeValue' => UploadedFile::fake()->create('test.png', 5001),
                 'errorMessage' => [
                     'image' => [
-                        'The image must not be greater than 3000 kilobytes.'
+                        'The image must not be greater than 5000 kilobytes.'
                     ]
                 ],
             ],
