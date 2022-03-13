@@ -18,7 +18,8 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'lte:10', 'nullable'],
-            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
+            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'nullable'],
+//            'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
             [ 'name.unique' => 'That sour has already been rated!', ]
@@ -27,7 +28,11 @@ class SourController extends Controller
         $validated['hasLactose'] = request()->has('hasLactose');
         if (request()->has('image')) {
             $validated['image'] = time() . '.' . 'jpg';
-            Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
+            Image::make(request()->file('image'))
+                ->resize(512, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    })
+                ->save(public_path('/storage/sours/') . $validated['image']);
         }
 
         auth()->user()->sours()->create($validated);
@@ -77,7 +82,11 @@ class SourController extends Controller
         $validated['hasLactose'] = request()->has('hasLactose');
         if (request()->has('image')) {
             $validated['image'] = time() . '.' . 'jpg';
-            Image::make(request()->file('image'))->save(public_path('/storage/sours/') . $validated['image']);
+            Image::make(request()->file('image'))
+                ->resize(512, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('/storage/sours/') . $validated['image']);
         }
 
         $sour->update($validated);

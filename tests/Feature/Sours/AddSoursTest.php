@@ -6,7 +6,9 @@ use App\Models\Sour;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Tests\TestCase;
 
 class AddSoursTest extends TestCase
@@ -74,6 +76,29 @@ class AddSoursTest extends TestCase
                 "message" => "The given data was invalid."
             ]);
     }
+
+    //TODO: Make this test work
+//    public function test_image_is_less_than_500KB()
+//    {
+//        $user = User::factory()->create();
+//        $this->actingAs($user);
+//
+//        $attributes = [
+//            'company' => 'Fixed Gear Brewing',
+//            'name' => 'Cherry Training Wheels',
+//            'percent' => 4.0,
+//            'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
+//            'rating' => 9,
+//            'hasLactose' => true,
+//            'image' => UploadedFile::fake()->image('test.png')->size(5000)
+//        ];
+//
+//        $this->postJson(route('sours.store'), $attributes);
+//
+//        $fileName = Sour::all()->first()->image;
+////        $fileSize = Storage::size(storage_path('app/public/sours/') . $fileName);
+//        $this->assertDatabaseCount('sours', 1);
+//    }
 
     /**
      * @dataProvider invalidDataAddSour
