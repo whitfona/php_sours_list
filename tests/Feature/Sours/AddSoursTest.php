@@ -187,15 +187,24 @@ class AddSoursTest extends TestCase
                 'errorMessage' => [
                     'rating' => [
                         'The rating must be a number.',
-                        'The rating must be greater than or equal to 0.'
+                        'The rating must be greater than or equal to 0.',
+                        'The rating must be less than or equal to 10.',
                     ]
                 ],
             ],
             'rating must greater than or equal to 0' => [
-                'invalidAttribute' => $this->setInvalidAttribute('rating', -4),
+                'invalidAttribute' => $this->setInvalidAttribute('rating', -1),
                 'errorMessage' => [
                     'rating' => [
                         'The rating must be greater than or equal to 0.'
+                    ]
+                ],
+            ],
+            'rating must be less than or equal to 10' => [
+                'invalidAttribute' => $this->setInvalidAttribute('rating', 11),
+                'errorMessage' => [
+                    'rating' => [
+                        'The rating must be less than or equal to 10.'
                     ]
                 ],
             ],

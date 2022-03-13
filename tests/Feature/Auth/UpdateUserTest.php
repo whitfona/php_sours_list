@@ -15,6 +15,7 @@ class UpdateUserTest extends TestCase
     public function test_update_screen_can_be_rendered()
     {
         $user = User::factory()->create();
+        $this->actingAs($user);
 
         $response = $this->get(route('users.edit', $user));
 
@@ -28,7 +29,7 @@ class UpdateUserTest extends TestCase
         $this->actingAs($user);
 
         $this->patch(route('users.update', $user), ['name' => 'Nick'])
-            ->assertOk();
+            ->assertRedirect(route('users.edit', $user));
 
         $this->assertArrayHasKey('name', User::all()->first()->toArray());
         $this->assertContains('Nick', User::all()->first()->toArray());
@@ -40,7 +41,7 @@ class UpdateUserTest extends TestCase
         $this->actingAs($user);
 
         $this->patch(route('users.update', $user), ['email' => 'nick@is.cool'])
-            ->assertOk();
+            ->assertRedirect(route('users.edit', $user));
 
         $this->assertArrayHasKey('email', User::all()->first()->toArray());
         $this->assertContains('nick@is.cool', User::all()->first()->toArray());
@@ -52,7 +53,7 @@ class UpdateUserTest extends TestCase
         $this->actingAs($user);
 
         $this->patch(route('users.update', $user), ['profileImage' => UploadedFile::fake()->image('test.png')])
-            ->assertOk();
+            ->assertRedirect(route('users.edit', $user));
 
         $this->assertArrayHasKey('profileImage', User::all()->first()->toArray());
         $this->assertNotNull(User::all()->first()->profileImage);
@@ -96,7 +97,7 @@ class UpdateUserTest extends TestCase
         $this->patchJson(route('users.update', $user), [
             'email' => 'test@test.com'
         ])
-            ->assertOk();
+            ->assertRedirect(route('users.edit', $user));
     }
 
     /**
