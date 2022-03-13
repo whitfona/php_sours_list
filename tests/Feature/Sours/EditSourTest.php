@@ -191,7 +191,8 @@ class EditSourTest extends TestCase
                 'errorMessage' => [
                     "rating" => [
                         "The rating must be a number.",
-                        "The rating must be greater than or equal to 0."
+                        "The rating must be greater than or equal to 0.",
+                        "The rating must be less than or equal to 10.",
                     ]
                 ]
             ],
@@ -201,6 +202,15 @@ class EditSourTest extends TestCase
                 'errorMessage' => [
                     "rating" => [
                         "The rating must be greater than or equal to 0."
+                    ]
+                ]
+            ],
+            'rating must be less than or equal to 10' => [
+                'attribute' => 'rating',
+                'attributeValue' => 11,
+                'errorMessage' => [
+                    "rating" => [
+                        "The rating must be less than or equal to 10."
                     ]
                 ]
             ],

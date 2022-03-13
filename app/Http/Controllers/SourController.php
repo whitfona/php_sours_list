@@ -18,7 +18,6 @@ class SourController extends Controller
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['required', 'numeric', 'gte:0', 'lte:10', 'nullable'],
-//            'rating' => ['required', 'numeric', 'between:0,10', 'nullable'],
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
@@ -68,7 +67,7 @@ class SourController extends Controller
             'name' => ['sometimes', 'required', 'string', Rule::unique('sours', 'name')->ignore($sour->id), 'max:100'],
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
-            'rating' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
+            'rating' => ['sometimes', 'numeric', 'gte:0', 'lte:10', 'nullable'],
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
