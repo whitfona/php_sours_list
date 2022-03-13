@@ -40,6 +40,19 @@ class EditSourTest extends TestCase
 //        $this->assertEquals($sour->toArray(), Sour::all()->first()->toArray());
     }
 
+    public function test_sour_can_be_edited_while_keeping_name_the_same()
+    {
+        $this->actingAs(User::factory()->create());
+
+        $sour = Sour::factory()->create(['name' => 'Test']);
+
+        $this->patchJson(route('sours.update', $sour), [
+            'name' => 'Test',
+            'percent' => 6.9,
+        ])
+            ->assertRedirect(route('sours.index'));
+    }
+
     public function test_sour_cannot_be_edited_by_unauthenticated_user()
     {
         $sour = Sour::factory()->create();

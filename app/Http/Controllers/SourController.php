@@ -69,7 +69,9 @@ class SourController extends Controller
     {
         $validated = request()->validate([
             'company' => ['sometimes', 'required', 'string', 'max:100'],
-            'name' => ['sometimes', 'required', 'string', Rule::unique('sours', 'name')->ignore($sour->id), 'max:100'],
+            'name' => ['sometimes', 'required', 'string', 'max:100', Rule::unique('sours', 'name')->where(function ($query) {
+                    return $query->where('user_id', auth()->user()->id);
+                 })->ignore($sour->id)],
             'percent' => ['sometimes', 'numeric', 'gte:0', 'nullable'],
             'comments' => ['sometimes', 'string', 'max:280', 'nullable'],
             'rating' => ['sometimes', 'numeric', 'gte:0', 'lte:10', 'nullable'],

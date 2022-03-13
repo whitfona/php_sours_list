@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('sours.update', $sour->id) }}" class="p-2" enctype="multipart/form-data">
+<form method="POST" action="{{ route('sours.update', $sour) }}" class="p-2" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <h2 class="text-white text-center text-2xl uppercase font-bold">Edit Bevvie</h2>
@@ -86,6 +86,6 @@
 
 
     <x-inputs.button class="mt-6">
-        {{ __('Edit') }}
+        {{ __('Save') }}
     </x-inputs.button>
 </form>
