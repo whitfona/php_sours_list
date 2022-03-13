@@ -242,10 +242,10 @@ class AddSoursTest extends TestCase
                 ],
             ],
             'image must be less than 3 MB' => [
-                'invalidAttribute' => $this->setInvalidAttribute('image', UploadedFile::fake()->create('test.png', 3001)),
+                'invalidAttribute' => $this->setInvalidAttribute('image', UploadedFile::fake()->create('test.png', 5001)),
                 'errorMessage' => [
                     'image' => [
-                        'The image must not be greater than 3000 kilobytes.'
+                        'The image must not be greater than 5000 kilobytes.'
                     ]
                 ],
             ],
