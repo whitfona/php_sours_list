@@ -26,7 +26,7 @@ class CreateSoursTable extends Migration
             $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+//            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
