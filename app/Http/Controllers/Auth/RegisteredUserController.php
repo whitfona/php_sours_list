@@ -69,12 +69,25 @@ class RegisteredUserController extends Controller
         $validated = \request()->validate([
             'name' => ['sometimes', 'required', 'string', 'max:255'],
             'email' => ['sometimes', 'required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
-            'profileImage' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:3000', 'nullable']
+            'profileImage' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:5000', 'nullable']
         ]);
 
         if (request()->has('profileImage')) {
             $validated['profileImage'] = time() . '.' . 'jpg';
-            Image::make(request()->file('profileImage'))->save(public_path('/storage/users/') . $validated['profileImage']);
+            Image::make(request()->file('profileImage'))
+                ->resize(512, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->orientate()
+                ->save(public_path('/storage/users/') . $validated['profileImage']);
+        }
+
+        if (request()->has('image')) {
+            $validated['image'] = time() . '.' . 'jpg';
+            Image::make(request()->file('image'))
+                ->resize(512, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('/storage/sours/') . $validated['image']);
         }
 
         $user->update($validated);
