@@ -85,7 +85,7 @@
     </div>
 
 
-    <x-inputs.button class="mt-6">
+    <x-inputs.button class="mt-8">
         {{ __('Save') }}
     </x-inputs.button>
 </form>
