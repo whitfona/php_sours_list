@@ -41,6 +41,11 @@ class SourController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('add-sour-form');
+    }
+
     public function index()
     {
         return view('my-sours', [
