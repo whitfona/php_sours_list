@@ -66,7 +66,7 @@ class SourController extends Controller
             abort(403);
         }
 
-        return view('sours.show', compact('sour'));
+        return view('edit-sour-form', compact('sour'));
     }
 
     public function update(Sour $sour)

@@ -59,9 +59,19 @@
                                     <p><span class="text-md font-semibold tracking-wide uppercase">Comments:</span> {{ $sour->comments }}</p>
                                 </div>
                             </div>
-                            <x-modal-edit buttonText="Edit" :sour="$sour" >
-                                <x-sours.edit-sour :sour="$sour" />
-                            </x-modal-edit>
+                            <!-- Delete Button -->
+                            <form method="POST" onclick="return confirm('Are you sure you want to delete this sour?')" action="/sours/{{ $sour->id }}" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline">
+                                    <p class="text-md text-white font-extrabold uppercase">Delete</p>
+                                </button>
+                            </form>
+
+                            <!-- Edit Button -->
+                            <a class="max-w-fit sm:px-6 rounded-md mt-6 p-4 bg-pink-400 hover:cursor-pointer hover:bg-pink-300 inline-block" href="{{ route('sours.show', $sour) }}">
+                                <span class="text-md text-white font-extrabold uppercase">Edit</span>
+                            </a>
                         </div>
                     @empty
                         <h2>You have not added any sours!</h2>
