@@ -20,9 +20,10 @@
 
     </x-slot>
 
-    <x-modal-add buttonText="Add">
-        <x-sours.add-sour />
-    </x-modal-add>
+    <a class="max-w-fit mx-auto sm:px-6 rounded-md mt-6 p-4 bg-pink-400 flex justify-center items-center hover:cursor-pointer hover:bg-pink-300" href="{{ route('sours.create') }}">
+        <x-plus-icon />
+        <p class="text-4xl text-white font-extrabold uppercase pl-3">Add</p>
+    </a>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

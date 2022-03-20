@@ -75,6 +75,9 @@
             <x-responsive-nav-link :href="route('sours.index')" :active="request()->routeIs('sours.index')">
                 {{ __('My Bevvies') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sours.create')" :active="request()->routeIs('sours.create')">
+                {{ __('Add Bevvie') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
