@@ -39,13 +39,14 @@
                 </div>
 
                 <!-- Password -->
-                <div class="mt-4">
+                <div class="mt-4" x-data="{ show: false }">
                     <x-inputs.label for="password" :value="__('Password')" />
 
                     <x-inputs.input id="password" class="block mt-1 w-full"
-                                    type="password"
+                                    x-bind:type="show ? 'text' : 'password'"
                                     name="password"
                                     required autocomplete="current-password" />
+                    <p x-on:click="show = !show" class="text-right text-sm mt-0.5 text-gray-700 hover:cursor-pointer">Show Password</p>
                 </div>
 
                 <!-- Remember Me -->
