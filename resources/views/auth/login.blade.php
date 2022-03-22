@@ -46,7 +46,7 @@
                                     x-bind:type="show ? 'text' : 'password'"
                                     name="password"
                                     required autocomplete="current-password" />
-                    <p x-on:click="show = !show" class="text-right text-sm mt-0.5 text-gray-700 hover:cursor-pointer">Show Password</p>
+                    <p x-on:click="show = !show" class="text-right text-sm mt-0.5 text-gray-700 hover:cursor-pointer" x-text="show ? 'Hide Password' : 'Show Password'"></p>
                 </div>
 
                 <!-- Remember Me -->
