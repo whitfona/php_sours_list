@@ -21,7 +21,7 @@ class SourController extends Controller
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:5000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
-            [ 'name.unique' => 'That sour has already been rated!', ]
+            [ 'name.unique' => 'That bevvie has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
@@ -37,7 +37,7 @@ class SourController extends Controller
         auth()->user()->sours()->create($validated);
 
         return redirect(route('sours.index'))->with([
-            'success' => 'Your new sour was successfully added!'
+            'success' => 'Your new bevvie was successfully added!'
         ]);
     }
 
@@ -82,7 +82,7 @@ class SourController extends Controller
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:5000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
-            [ 'name.unique' => 'That sour has already been rated!', ]
+            [ 'name.unique' => 'That bevvie has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
@@ -98,7 +98,7 @@ class SourController extends Controller
         $sour->update($validated);
 
         return redirect(route('sours.index'))->with([
-            'success' => 'The sour was successfully updated!'
+            'success' => 'Your bevvie was successfully updated!'
         ]);
     }
 
@@ -107,7 +107,7 @@ class SourController extends Controller
         $sour->delete();
 
         return redirect(route('sours.index'))->with([
-            'success' => 'The sour was successfully deleted!'
+            'success' => 'Your bevvie was successfully deleted!'
         ]);
     }
 }
