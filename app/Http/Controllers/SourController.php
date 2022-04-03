@@ -21,7 +21,7 @@ class SourController extends Controller
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:5000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
-            [ 'name.unique' => 'That sour has already been rated!', ]
+            [ 'name.unique' => 'That bevvie has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
@@ -82,7 +82,7 @@ class SourController extends Controller
             'image' => ['sometimes', 'mimes:heic,jpg,jpeg,png,bmp,gif,svg,webp', 'max:5000', 'nullable'],
             'category_id' => ['sometimes', 'numeric', 'gte:0', 'nullable']
         ],
-            [ 'name.unique' => 'That sour has already been rated!', ]
+            [ 'name.unique' => 'That bevvie has already been rated!', ]
         );
 
         $validated['hasLactose'] = request()->has('hasLactose');
