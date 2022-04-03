@@ -22,15 +22,12 @@
         <div class="">
             @if (Route::has('login'))
                 <div class="max-w-lg mx-auto text-right px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/sours') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">Log in</a>
+                    <a href="{{ url('/sours') }}" class="text-md text-white no-underline hover:underline dark:text-gray-500 ">All Bevvies</a>
+                    <a href="{{ route('login') }}" class="ml-4 text-md text-white no-underline hover:underline dark:text-gray-500 ">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-md text-white no-underline hover:underline dark:text-gray-500 ">Register</a>
-                        @endif
-                    @endauth
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-md text-white no-underline hover:underline dark:text-gray-500 ">Register</a>
+                    @endif
                 </div>
             @endif
 
