@@ -1,7 +1,6 @@
-
+<img alt="Shouts Logo" src="./SHOUTS.png" width="111" height="91"> 
 <h1>
-    ![SHOUTS](https://user-images.githubusercontent.com/60898437/165872791-8742a925-fa8d-4397-9e5a-eea337d82682.png)
-SHOUTS
+    SHOUTS
 </h1>
 
 ## Welcome to SHOUTS
