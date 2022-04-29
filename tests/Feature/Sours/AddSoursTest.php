@@ -70,7 +70,7 @@ class AddSoursTest extends TestCase
             ->assertExactJson([
                 "errors" => [
                     "name" => [
-                        "That sour has already been rated!"
+                        "That bevvie has already been rated!"
                     ]
                 ],
                 "message" => "The given data was invalid."

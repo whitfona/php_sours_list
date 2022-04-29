@@ -27,14 +27,14 @@ class GetSoursTest extends TestCase
             ->assertSee(['name' => $guestSour->name]);
     }
 
-    public function test_unauthenticated_user_cannot_view_all_sours()
+    public function test_guest_can_view_all_sours()
     {
-        $guestSour = Sour::factory()->create();
+        Sour::factory(5)->create();
 
-        $this->assertDatabaseCount('sours', 1);
+        $this->assertDatabaseCount('sours', 5);
 
         $this->get(route('sours.all'))
-            ->assertRedirect('login');
+            ->assertOk();
 
         $this->assertGuest();
     }

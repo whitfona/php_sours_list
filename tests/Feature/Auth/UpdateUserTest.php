@@ -195,12 +195,12 @@ class UpdateUserTest extends TestCase
                     ]
                 ]
             ],
-            'image must be less than 3MB' => [
+            'image must be less than 5MB' => [
                 'attribute' => 'profileImage',
-                'attributeValue' => UploadedFile::fake()->create('image.png', 3001),
+                'attributeValue' => UploadedFile::fake()->create('image.png', 5001),
                 'errorMessage' => [
                     "profileImage" => [
-                        "The profile image must not be greater than 3000 kilobytes."
+                        "The profile image must not be greater than 5000 kilobytes."
                     ]
                 ]
             ],
