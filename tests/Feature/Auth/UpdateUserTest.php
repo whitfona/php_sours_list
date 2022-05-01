@@ -3,7 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -57,6 +57,8 @@ class UpdateUserTest extends TestCase
 
         $this->assertArrayHasKey('profileImage', User::all()->first()->toArray());
         $this->assertNotNull(User::all()->first()->profileImage);
+
+        $this->clearImagesFromUsersStorage();
     }
 
     public function test_unauthenticated_user_can_not_update_a_profile()
@@ -205,5 +207,14 @@ class UpdateUserTest extends TestCase
                 ]
             ],
         ];
+    }
+
+    /**
+     * @return void
+     */
+    public function clearImagesFromUsersStorage(): void
+    {
+        $files = new Filesystem();
+        $files->cleanDirectory('storage/app/public/users');
     }
 }
