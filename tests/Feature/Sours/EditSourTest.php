@@ -26,7 +26,7 @@ class EditSourTest extends TestCase
             'comments' => 'Updated comments',
             'rating' => 10,
             'hasLactose' => true,
-            'image' => UploadedFile::fake()->image('test.jpg'),
+//            'image' => UploadedFile::fake()->image('test.jpg'),
             ])
         ->assertRedirect(route('sours.index'));
 

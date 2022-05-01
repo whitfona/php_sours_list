@@ -43,7 +43,7 @@ class AddSoursTest extends TestCase
             'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
             'rating' => 9,
             'hasLactose' => true,
-            'image' => UploadedFile::fake()->image('test-image.png'),
+//            'image' => UploadedFile::fake()->image('test-image.png'),
             'category' => 1
         ];
 
