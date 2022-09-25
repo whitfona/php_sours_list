@@ -26,18 +26,8 @@ class EditSourTest extends TestCase
             'comments' => 'Updated comments',
             'rating' => 10,
             'hasLactose' => true,
-//            'image' => UploadedFile::fake()->image('test.jpg'),
             ])
         ->assertRedirect(route('sours.index'));
-
-//        $sour['company'] = 'Nick Test Company';
-//        $sour['name'] = 'Nick Test Name';
-//        $sour['percent'] = 6.9;
-//        $sour['comments'] = 'Updated comments';
-//        $sour['rating'] = 10;
-//        $sour['hasLactose'] = true;
-
-//        $this->assertEquals($sour->toArray(), Sour::all()->first()->toArray());
     }
 
     public function test_sour_can_be_edited_while_keeping_name_the_same()
