@@ -43,7 +43,6 @@ class AddSoursTest extends TestCase
             'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
             'rating' => 9,
             'hasLactose' => true,
-//            'image' => UploadedFile::fake()->image('test-image.png'),
             'category' => 1
         ];
 
@@ -51,7 +50,6 @@ class AddSoursTest extends TestCase
             ->assertRedirect(route('sours.index'));
 
         $this->assertDatabaseCount('sours', 1);
-//        $this->assertDatabaseHas('sours', $attributes);
     }
 
     public function test_user_cannot_add_sour_they_have_already_added()
@@ -76,29 +74,6 @@ class AddSoursTest extends TestCase
                 "message" => "The given data was invalid."
             ]);
     }
-
-    //TODO: Make this test work
-//    public function test_image_is_less_than_500KB()
-//    {
-//        $user = User::factory()->create();
-//        $this->actingAs($user);
-//
-//        $attributes = [
-//            'company' => 'Fixed Gear Brewing',
-//            'name' => 'Cherry Training Wheels',
-//            'percent' => 4.0,
-//            'comments' => 'Cherry Training Wheels is soured with our lactobacillus blend to generate a tart lactic acidity, then hopped generously with North American hops to bring out notes of lemon peel. Blended with fresh cherry juice and pours a beautiful pink.',
-//            'rating' => 9,
-//            'hasLactose' => true,
-//            'image' => UploadedFile::fake()->image('test.png')->size(5000)
-//        ];
-//
-//        $this->postJson(route('sours.store'), $attributes);
-//
-//        $fileName = Sour::all()->first()->image;
-////        $fileSize = Storage::size(storage_path('app/public/sours/') . $fileName);
-//        $this->assertDatabaseCount('sours', 1);
-//    }
 
     /**
      * @dataProvider invalidDataAddSour

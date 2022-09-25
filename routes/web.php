@@ -7,11 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::get('/board', function () {
-//    return view('dashboard');
-//})->middleware(['auth'])->name('dashboard');
-
-
 Route::middleware(['auth'])->prefix('/sours')->group(function() {
     Route::get('/', [SourController::class, 'all'])->name('sours.all')->withoutMiddleware(['auth']);
     Route::post('/', [SourController::class, 'store'])->name('sours.store');
